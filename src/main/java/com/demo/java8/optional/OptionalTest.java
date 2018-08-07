@@ -76,6 +76,10 @@ public class OptionalTest {
         User result = Optional.ofNullable(user).orElse(user2);
 
         assertEquals("zhangSan", result.getUserName());
+
+        //对象的初始值不是null，返回user，但是createNewUser方法还是会执行
+        User result2 = Optional.ofNullable(user).orElse(createNewUser());
+
     }
 
     /**
