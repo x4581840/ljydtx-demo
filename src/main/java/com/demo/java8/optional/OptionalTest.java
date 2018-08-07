@@ -64,7 +64,7 @@ public class OptionalTest {
     @Test
     public void whenEmptyValue_thenReturnDefaultOrIgnore() {
         /*User user = null;
-        User user2 = new User("zhangSan", "1234");
+        User user2 = new User("zhangSan", "12345");
         User result = Optional.ofNullable(user).orElse(user2);
 
         //这里 user 对象是空的，所以返回了作为默认值的 user2。
