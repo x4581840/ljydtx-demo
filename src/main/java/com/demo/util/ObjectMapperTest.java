@@ -20,6 +20,18 @@ import java.util.List;
  * ObjectMapper
  * jackson提供的，主要是用来把对象转换成为一个json字符串
  */
+/*
+第一，ObjectMapper在自动识别java类时，如果类中有一个节点是Node，但是在ObjectMapper眼中它却是node（小写的n）；
+这样如果你的json字符串中节点是Node，此时就会匹配不上。
+
+第二，ObjectMapper在自动识别java类时，如果类中有一个节点是ID,则在ObjectMapper眼中它是id。
+
+第三，所以定义类的属性要规范，首字母小写，对于ID，就应该写id，而不是ID或者iD。要规范。第一点和第二点也就是我犯错的原因。
+
+第四，如果json字符串中，key的首字母大些了，则要用replace转换成小写。比如{"Node":"n1"},要替换成{"node":"n1"}。
+
+第五，为什么选择ObjectMapper，因为效率高。
+ */
 public class ObjectMapperTest {
 
     @Test
