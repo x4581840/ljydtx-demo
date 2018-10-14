@@ -3,6 +3,7 @@ package com.demo.bo;
 import com.demo.mapper.UserMapper;
 import com.demo.model.User;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -18,6 +19,18 @@ public class UserBoImpl /*extends SqlSessionDaoSupport*/ implements UserBo {
         userMapper.insert(user);
     }
 
+    @Override
+    public User selectUser(Integer id) {
+        return userMapper.lockUserById(id);
+    }
+
+    @Override
+    @Transactional
+    public void testJishu() {
+        User user = userMapper.lockUserById(1);
+        user.setUserAge(user.getUserAge()+1);
+        userMapper.updateByPrimaryKey(user);
+    }
     /*@Resource
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
         super.setSqlSessionFactory(sqlSessionFactory);

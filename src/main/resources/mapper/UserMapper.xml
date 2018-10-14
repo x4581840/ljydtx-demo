@@ -225,4 +225,11 @@
       user_info = #{userInfo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="lockUserById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER} for update
+  </select>
 </mapper>

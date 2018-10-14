@@ -28,4 +28,36 @@ public class UserController {
         userBo.insertUser(user);
         return user;
     }
+
+    @RequestMapping("/testjisshu")
+    public User testjisshu() {
+        MyThread myThread1 = new MyThread();
+        Thread t1 = new Thread(myThread1);
+        MyThread myThread2 = new MyThread();
+        Thread t2 = new Thread(myThread2);
+        MyThread myThread3 = new MyThread();
+        Thread t3 = new Thread(myThread3);
+        MyThread myThread4 = new MyThread();
+        Thread t4 = new Thread(myThread4);
+        MyThread myThread5 = new MyThread();
+        Thread t5 = new Thread(myThread5);
+
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+        t5.start();
+
+        return userBo.selectUser(1);
+    }
+
+    class MyThread implements Runnable {
+
+        @Override
+        public void run() {
+            userBo.testJishu();
+        }
+    }
 }
+
+
