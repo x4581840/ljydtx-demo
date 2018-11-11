@@ -92,7 +92,7 @@ public class ObjectMapperTest {
         //反序列化的时候如果多了其他属性,不抛出异常
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-//		Person person = new Person(1, "zxc", new Date());
+//		Person person = new Person1(1, "zxc", new Date());
 
 //		String personJson = objectMapper.writeValueAsString(person);
 //		System.out.println(personJson);

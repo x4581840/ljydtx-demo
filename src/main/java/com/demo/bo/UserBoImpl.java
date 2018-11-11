@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @Component
@@ -30,6 +31,11 @@ public class UserBoImpl /*extends SqlSessionDaoSupport*/ implements UserBo {
         User user = userMapper.lockUserById(1);
         user.setUserAge(user.getUserAge()+1);
         userMapper.updateByPrimaryKey(user);
+    }
+
+    @Override
+    public List<User> selectUserByCondition(String userName) {
+        return userMapper.selectUserByCondition(userName);
     }
     /*@Resource
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {

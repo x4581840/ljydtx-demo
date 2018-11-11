@@ -232,4 +232,17 @@
     from user
     where id = #{id,jdbcType=INTEGER} for update
   </select>
+
+  <select id="selectUserByCondition" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    <!-- 当if中的条件成立，后面会加where user_name like '%xxx%',去掉了and -->
+    <!-- 字符串拼接：mysql用concat ，Oracle用||-->
+    <where>
+      <if test="userName != null and userName != ''">
+          and user_name like concat('%', #{userName}, '%')
+      </if>
+    </where>
+  </select>
 </mapper>
