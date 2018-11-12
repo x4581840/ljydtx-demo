@@ -47,6 +47,7 @@ public class UserController {
         t3.start();
         t4.start();
         t5.start();
+//        userBo.testJishu();
 
         return userBo.selectUser(1);
     }
