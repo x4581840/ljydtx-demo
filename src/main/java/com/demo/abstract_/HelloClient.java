@@ -11,4 +11,8 @@ public class HelloClient extends AbstractClient {
     public void baseInterfaceMethod_b(String msg) {
         super.baseInterfaceMethod_a("a");
     }
+
+    public HelloClient(String msg) {
+        System.out.println("HelloClient(String msg)"+msg);
+    }
 }
