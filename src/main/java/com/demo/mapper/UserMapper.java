@@ -32,4 +32,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User lockUserById(Integer id);
+
+    List<User> selectUserByCondition(@Param("userName") String userName);
 }

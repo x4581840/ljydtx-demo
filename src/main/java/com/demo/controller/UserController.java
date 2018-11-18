@@ -4,10 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.demo.bo.UserBo;
 import com.demo.model.User;
 
+import com.demo.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -15,6 +18,9 @@ public class UserController {
 
     @Resource
     private UserBo userBo;
+
+    @Resource
+    private UserService userService;
 
     @RequestMapping("/insertUser")
     public User test() {
@@ -27,6 +33,11 @@ public class UserController {
         //user.setUserInfo(user.toString()); 如果不是json字符串，就好报错
         userBo.insertUser(user);
         return user;
+    }
+
+    @RequestMapping("/selectUser")
+    public List<User> selectUser(@RequestParam("userName") String userName) {
+        return userBo.selectUserByCondition(userName);
     }
 
     @RequestMapping("/testjisshu")
