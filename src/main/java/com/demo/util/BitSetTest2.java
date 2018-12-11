@@ -1,7 +1,7 @@
 package com.demo.util;
 
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.BitSet;
 import java.util.Random;

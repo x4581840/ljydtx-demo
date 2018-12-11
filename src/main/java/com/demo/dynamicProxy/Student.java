@@ -7,6 +7,10 @@ public class Student implements Person1 {
     public Student(String name) {
         this.name = name;
     }
+    
+    public String getName() {
+    	return this.name;
+    }
 
     @Override
     public void giveMoney() {

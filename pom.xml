@@ -26,9 +26,56 @@
 
 	<dependencies>
 		<dependency>
+		    <groupId>org.testng</groupId>
+		    <artifactId>testng</artifactId>
+		    <version>6.13.1</version>
+		    <scope>test</scope>
+		</dependency>
+			
+		<dependency>
+	        <groupId>com.fasterxml.jackson.datatype</groupId>
+	        <artifactId>jackson-datatype-guava</artifactId>
+	        <version>2.9.7</version>
+	    </dependency>
+	    <dependency>
+	            <groupId>io.protostuff</groupId>
+	            <artifactId>protostuff-core</artifactId>
+	            <version>1.4.0</version>
+	        </dependency>
+	 
+	        <dependency>
+	            <groupId>io.protostuff</groupId>
+	            <artifactId>protostuff-runtime</artifactId>
+	            <version>1.4.0</version>
+	        </dependency>
+	        
+	    <!-- <dependency>
+	        <groupId>com.esotericsoftware</groupId>
+	        <artifactId>kryo</artifactId>
+	        <version>4.0.2</version>
+	    </dependency> -->
+	    
+	    <dependency>
+		  <groupId>com.esotericsoftware</groupId>
+		  <artifactId>kryo-shaded</artifactId>
+		  <version>3.0.3</version>
+		</dependency>
+	    
+		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
 			<version>2.2.2</version>
+			<exclusions>
+	           	<!-- Exclude asm -->
+		      	<exclusion>
+		            <groupId>org.ow2.asm</groupId>
+		            <artifactId>asm</artifactId>
+		        </exclusion>
+		      	<exclusion>
+		      		<groupId>asm</groupId>
+		      		<artifactId>asm</artifactId>
+		      	</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.ow2.asm</groupId>
@@ -113,7 +160,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.1.36</version>
+			<version>1.2.54</version>
 		</dependency>
 
 		<dependency>
@@ -136,11 +183,6 @@
 			<systemPath>/Users/longjianyong/project/ljydtx-demo/src/main/webapp/WEB-INF/lib/java_memcached-release_2.6.6.jar</systemPath>
 		</dependency>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.3.5</version>
@@ -155,8 +197,13 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0-beta1</version>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>
@@ -175,14 +222,6 @@
 					<verbose>true</verbose>
 					<overwrite>true</overwrite>
 				</configuration>
-				<executions>
-					<execution>
-						<id>Generate MyBatis Artifacts</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
 				<dependencies>
 					<dependency>
 						<groupId>org.mybatis.generator</groupId>
