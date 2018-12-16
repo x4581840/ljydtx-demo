@@ -224,7 +224,7 @@ public class KryoTest {
 		return (List<T>) kryo.readObject(input, ArrayList.class, serializer);
 	}
 
-	private <T extends Serializable> String serializationMap(Map<String, T> obj, Class<T> clazz) {
+	public static <T extends Serializable> String serializationMap(Map<String, T> obj, Class<T> clazz) {
 		Kryo kryo = new Kryo();
 		kryo.setReferences(false);
 		kryo.setRegistrationRequired(true);
@@ -251,7 +251,7 @@ public class KryoTest {
 	}
 
 	@SuppressWarnings("unchecked")
-	private <T extends Serializable> Map<String, T> deserializationMap(String obj, Class<T> clazz) {
+	public static <T extends Serializable> Map<String, T> deserializationMap(String obj, Class<T> clazz) {
 		Kryo kryo = new Kryo();
 		kryo.setReferences(false);
 		kryo.setRegistrationRequired(true);
