@@ -9,6 +9,40 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
+        testKryoArrayList();
+
+    }
+
+    private static void testKryoArrayList() {
+        StudentsWrap stusWrap = new StudentsWrap();
+        List<Student> stuList = new ArrayList<>();
+        Student stu = new Student();
+        stu.setId("1");
+        stu.setName("tom");
+        stu.setAge(18);
+        stu.setAddress("hunan");
+        stuList.add(stu);
+        stu = new Student();
+        stu.setId("2");
+        stu.setName("lisi");
+        stu.setAge(28);
+        stu.setName("zhuzhou");
+        stuList.add(stu);
+        stusWrap.setStus(stuList);
+
+        ISerialize serialize = new StudentsWrapKryoSerialize();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        serialize.serialize(stusWrap, out);
+
+        StudentsWrap studentsWrap = serialize.deserialize(StudentsWrap.class, new ByteArrayInputStream(out.toByteArray()));
+        System.out.println(studentsWrap.getStus().get(0).getName());
+        System.out.println(studentsWrap.getStus().get(0).getAddress());
+
+        System.out.println(studentsWrap.getStus().get(1).getName());
+        System.out.println(studentsWrap.getStus().get(1).getAddress());
+    }
+
+    private static void testKryoHashMap() {
         Map<String, Cell> cellMap = new HashMap<>();
         Cell cell = new Cell();
         cell.setName("longjianyong");
@@ -50,4 +84,4 @@ public class Main {
         System.out.println(cellsWrap1.getMaps().get("SUB").getName());
         System.out.println(cellsWrap1.getMaps().get("SUB").getTest());
     }
-}
+ }
