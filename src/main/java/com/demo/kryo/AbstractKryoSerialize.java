@@ -13,15 +13,16 @@ public abstract class AbstractKryoSerialize implements ISerialize {
     @Override
     public <T> void serialize(T obj, OutputStream outputStream) {
         Kryo kryo = null;
+        KryoPool kryoPool = getKryoPool();
         try (BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
              Output output = new Output(bufferedOutputStream);) {
-            kryo = getKryoPool().obtain();
+            kryo = kryoPool.obtain();
             kryo.writeObject(output, obj);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         } finally {
             if (kryo != null) {
-                getKryoPool().free(kryo);
+                kryoPool.free(kryo);
             }
         }
     }
@@ -29,16 +30,17 @@ public abstract class AbstractKryoSerialize implements ISerialize {
     @Override
     public <T> T deserialize(Class<T> clazz, InputStream inputStream) {
         Kryo kryo = null;
+        KryoPool kryoPool = getKryoPool();
         try (BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
              Input input = new Input(bufferedInputStream);) {
-            kryo = getKryoPool().obtain();
+            kryo = kryoPool.obtain();
 
             return (T)kryo.readObject(input, clazz);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         } finally {
             if (kryo != null) {
-                getKryoPool().free(kryo);
+                kryoPool.free(kryo);
             }
         }
     }

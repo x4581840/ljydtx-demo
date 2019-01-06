@@ -23,7 +23,7 @@ public class RectangleTest {
         reqRegion1.setEndCol(15);
         System.out.println(isCross(reqRegion1, sheetRegion));
 
-        
+
     }
 
 
