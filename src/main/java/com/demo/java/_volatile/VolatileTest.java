@@ -4,8 +4,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class VolatileTest {
-    public static void main(String[] args) throws InterruptedException {
 
+    private VolatileTest(){}
+
+    public static void main(String[] args) throws InterruptedException {
+        VolatileTest v = new VolatileTest();
+        v.test_01();
         test_01();
     }
 

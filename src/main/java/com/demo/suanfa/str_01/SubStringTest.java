@@ -35,7 +35,7 @@ public class SubStringTest {
         Map<Character, Integer> map = new HashMap<>();
         while(R < s.length() && L <= R) {
             char c = s.charAt(R);
-            //map.get(c)<L，c可能是在L左边
+            //collection.get(c)<L，c可能是在L左边
             if(!map.containsKey(c) || map.get(c) < L) {
                 map.put(c,R);
                 R++;

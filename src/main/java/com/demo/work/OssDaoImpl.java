@@ -153,15 +153,15 @@ public class OssDaoImpl implements DAO {
     /*private Map<String, Map<Integer, List<Integer>>> getInsertPosition(Map<String, Pair<Integer, Integer>> cellFileNameStartEndRowMap, List<TargetCell> cells) {
     	Map<String, Map<Integer, List<Integer>>> result = new HashMap<>();
     	cellFileNameStartEndRowMap.forEach((key,value) -> {
-    		Map<Integer, List<Integer>> map = new HashMap<>();
+    		Map<Integer, List<Integer>> collection = new HashMap<>();
     		cells.forEach(cell -> {
     			if(value.getLeft() <= cell.getRow() && cell.getRow() <= value.getRight()) {
-    				List<Integer> colLists = map.computeIfAbsent(cell.getRow(), k -> new ArrayList<>());
+    				List<Integer> colLists = collection.computeIfAbsent(cell.getRow(), k -> new ArrayList<>());
     				colLists.add(cell.getCol());
     			}
     		});
-    		if(!CollectionUtils.isEmpty(map)) {
-    			result.put(key, map);
+    		if(!CollectionUtils.isEmpty(collection)) {
+    			result.put(key, collection);
     		}
     	});
     	return result;

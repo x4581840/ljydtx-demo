@@ -140,14 +140,14 @@ public class OptionalTest {
 
     /**
      * 转换值
-     * 有很多种方法可以转换 Optional  的值。我们从 map() 和 flatMap() 方法开始
+     * 有很多种方法可以转换 Optional  的值。我们从 collection() 和 flatMap() 方法开始
      */
     @Test
     public void whenMap_thenOk() {
         User user = new User("longjianyong", "1234");
         String userName = Optional.ofNullable(user)
                 .map(u -> u.getUserName()).orElse("aidisheng");
-        //map() 对值应用(调用)作为参数的函数，然后将返回的值包装在 Optional 中
+        //collection() 对值应用(调用)作为参数的函数，然后将返回的值包装在 Optional 中
         assertEquals(userName, user.getUserName());
     }
 
@@ -192,7 +192,7 @@ public class OptionalTest {
         /*String result = Optional.ofNullable(user)
                 .flatMap(u -> u.getAddress())
                 .flatMap(a -> a.getCountry())
-                .map(c -> c.getIsocode())
+                .collection(c -> c.getIsocode())
                 .orElse("default");*/
 
         //上面的代码可以通过方法引用进一步缩减
@@ -241,7 +241,7 @@ public class OptionalTest {
         List<String> emails = Optional.ofNullable(user)
                 .stream()
                 .filter(u -> u.getEmail() != null && u.getEmail().contains("@"))
-                .map( u -> u.getEmail())
+                .collection( u -> u.getEmail())
                 .collect(Collectors.toList());
 
         assertTrue(emails.size() == 1);

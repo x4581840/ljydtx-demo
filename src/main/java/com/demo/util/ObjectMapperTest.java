@@ -80,7 +80,7 @@ public class ObjectMapperTest {
         /**
          * 输出
          * {}
-         com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.demo.util.Person and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)
+         com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.demo.util.People and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)
          */
     }
 
@@ -92,7 +92,7 @@ public class ObjectMapperTest {
         //反序列化的时候如果多了其他属性,不抛出异常
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-//		Person person = new Person1(1, "zxc", new Date());
+//		People person = new Person1(1, "zxc", new Date());
 
 //		String personJson = objectMapper.writeValueAsString(person);
 //		System.out.println(personJson);
@@ -111,7 +111,7 @@ public class ObjectMapperTest {
 
         /**
          * 输出
-         *Person [id=1, name=zxc, birthDate=null]
+         *People [id=1, name=zxc, birthDate=null]
          com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "age"
          */
     }

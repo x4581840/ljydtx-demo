@@ -132,7 +132,22 @@ public class BitSetTest {
         System.out.println("偶数Bit-长度：" + evenBitSet.length());
     }
     public static void main(String[] args) {
-        test1();
+//        test1();
+        BitSet bitSet = new BitSet(100);
+        bitSet.set(88);
+        System.out.println(bitSet);//{88}
+        System.out.println(bitSet.get(88)); //true
+        System.out.println(bitSet.get(89)); //false
+        System.out.println(bitSet.get(100)); //false
+        bitSet.set(101);
+        System.out.println(bitSet.get(101)); //true
+
+        bitSet.set(Integer.MAX_VALUE);
+        System.out.println(bitSet.get(Integer.MAX_VALUE));//true
+        System.out.println(Integer.MAX_VALUE);
+
+//        bitSet.set(Integer.MAX_VALUE+1);//报错
+//        System.out.println(bitSet.get(Integer.MAX_VALUEAX_VALUE+1));//报错
     }
 
     public static void test1() {

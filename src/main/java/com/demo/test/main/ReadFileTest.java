@@ -1,4 +1,4 @@
-package com.demo.testmain;
+package com.demo.test.main;
 
 import com.beust.jcommander.internal.Lists;
 import com.beust.jcommander.internal.Maps;
@@ -8,8 +8,6 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import java.io.*;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
