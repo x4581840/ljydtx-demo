@@ -1,13 +1,32 @@
 package com.demo.dynamicProxy;
 
+import sun.misc.BASE64Encoder;
+
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.security.SecureRandom;
+import java.util.Random;
 
 /**
  * Java自带的动态代理实现
  */
 public class Main1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
+//        dynamicProxyForJDK();
+        testSalt();
+    }
+
+    public static void testSalt() throws UnsupportedEncodingException {
+        Random RANDOM = new SecureRandom();
+        byte[] salt = new byte[16];
+        RANDOM.nextBytes(salt);
+//        String str = new String(salt,"UTF-8");
+        String str = new BASE64Encoder().encode(salt);
+        System.out.println(str);
+    }
+
+    private static void dynamicProxyForJDK() {
         //要代理的真实的对象
         UserService userService = new UserServiceImpl();
         //生成代理类

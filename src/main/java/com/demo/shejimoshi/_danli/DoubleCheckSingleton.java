@@ -1,5 +1,8 @@
 package com.demo.shejimoshi._danli;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * 双重检查加锁式单例--- 第三种
  *
@@ -13,8 +16,8 @@ package com.demo.shejimoshi._danli;
  */
 public class DoubleCheckSingleton {
 
-    private static volatile DoubleCheckSingleton singleton = null;
-
+//    private static volatile DoubleCheckSingleton singleton = null;
+    private static DoubleCheckSingleton singleton = null;
     private DoubleCheckSingleton() {}
 
     public static DoubleCheckSingleton getSingleton() {
@@ -29,5 +32,23 @@ public class DoubleCheckSingleton {
             }
         }
         return singleton;
+    }
+
+    public static void main(String[] args) {
+        // 静态变量singleton没有被volatile修饰时的测试（没测出来singleton为null情况）
+        ExecutorService executorService = Executors.newFixedThreadPool(2000);
+        for(int i=1;i<=10000;i++) {
+            executorService.submit(new Runnable() {
+                @Override
+                public void run() {
+//                    System.out.println("thread name:"+Thread.currentThread().getName()+",single:"+DoubleCheckSingleton.getSingleton());
+                    DoubleCheckSingleton singleton = DoubleCheckSingleton.getSingleton();
+                    if(singleton == null) {
+                        System.out.println("thread name:"+Thread.currentThread().getName()+",single:"+singleton);
+                    }
+                }
+            });
+        }
+        executorService.shutdown();
     }
 }

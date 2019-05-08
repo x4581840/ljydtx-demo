@@ -1,11 +1,14 @@
 package com.demo.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class HashMapTest extends Object{
     public static void main(String[] args) throws Throwable {
-        test_1();
+//        test_1();
+        test_getOrDefault();
     }
 
     public static void test_1() throws Throwable {
@@ -29,5 +32,38 @@ public class HashMapTest extends Object{
 
         HashMapTest hashMapTest = new HashMapTest();
         hashMapTest.finalize();
+    }
+
+    //getOrDefault(key, default)
+    //如果key存在于map，或者通过key获取到的对象result不为null，则返回结果等于这个result，否则返回结果为default
+    public static void test_getOrDefault() {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("a", "A");
+        map.put("b", "B");
+        map.put("c", null);
+        map.put("d", "D");
+
+        String res = "";
+        // old
+        if(map.containsKey("c")) {
+            String value = map.get("c");
+            if(StringUtils.isBlank(value)) {
+                value = "default";
+                res =  value;
+            }
+        }
+        System.out.println("res = "+res);
+
+        String res1 = map.getOrDefault("c", "default1");
+        System.out.println("res1 = "+res1); //null 因为存在key为c
+
+        String res2 = map.getOrDefault("d", "default2");
+        System.out.println("res2 = "+res2); //D 因为get("d")不为空
+
+        String res3 = map.getOrDefault("e", "default3");
+        System.out.println("res3 = "+res3); //defaul 不存在key
+
+
     }
 }
