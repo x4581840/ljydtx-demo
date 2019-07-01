@@ -5,7 +5,8 @@ import java.util.concurrent.Executors;
 
 public class VolatileTest {
 
-    private VolatileTest(){}
+    private VolatileTest() {
+    }
 
     public static void main(String[] args) throws InterruptedException {
         VolatileTest v = new VolatileTest();
@@ -15,7 +16,7 @@ public class VolatileTest {
 
     private static void test_01() throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.execute(() ->{
+        executorService.execute(() -> {
             System.out.println("开始执行");
             while (Value.i == 0) {
                 //类Value的i属性没有加volatile关键字之前，这个while是死循环
@@ -41,6 +42,6 @@ public class VolatileTest {
     }
 }
 
-class Value{
+class Value {
     public volatile static int i = 0;
 }

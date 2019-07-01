@@ -3,7 +3,7 @@ package com.demo.shejimoshil._daili;
 /**
  * 静态代理
  */
-public class BuyHouseStaticProxy implements BuyHouse{
+public class BuyHouseStaticProxy implements BuyHouse {
 
     private BuyHouse buyHouse;
 

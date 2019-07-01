@@ -24,7 +24,6 @@ public class IntegerTest {
     //实测其他基本数据类型的包装类都有这个缓存池，包括：Byte,Short,Long
 
 
-
     //Integer已经默认创建了数值【-128-127】的Integer缓存数据。所以使用Integer i1=40时，
     // JVM会直接在该在对象池找到该值的引用。   也就是说这种方式声明一个Integer对象时，
     // JVM首先会在Integer对象的缓存池中查找有木有值为40的对象，如果有直接返回该对象的引用；

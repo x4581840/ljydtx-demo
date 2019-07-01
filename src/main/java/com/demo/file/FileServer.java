@@ -22,9 +22,9 @@ public class FileServer {
         try {
             buffInputStream = new BufferedInputStream(new FileInputStream(new File("D:\\testFile\\test.txt")));
             outputStream = response.getOutputStream();
-            byte[] buff = new byte[1024*1024]; //如果是稍微大的文件，这里配置的大一些
+            byte[] buff = new byte[1024 * 1024]; //如果是稍微大的文件，这里配置的大一些
             int len = 0;
-            while((len = buffInputStream.read(buff)) > 0) {
+            while ((len = buffInputStream.read(buff)) > 0) {
                 //把文件流写入到response的输出流中，供请求端请求
                 outputStream.write(buff, 0, len);
                 outputStream.flush();
@@ -35,14 +35,14 @@ public class FileServer {
             e.printStackTrace();
         } finally {
             try {
-                if(buffInputStream != null) {
+                if (buffInputStream != null) {
                     buffInputStream.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                if(outputStream != null) {
+                if (outputStream != null) {
                     outputStream.close();
                 }
             } catch (IOException e) {
@@ -58,9 +58,9 @@ public class FileServer {
         try {
             buffInputStream = new BufferedInputStream(new FileInputStream(new File("D:\\testFile\\test.gz")));
             outputStream = response.getOutputStream();
-            byte[] buff = new byte[1024*1024]; //如果是稍微大的文件，这里配置的大一些
+            byte[] buff = new byte[1024 * 1024]; //如果是稍微大的文件，这里配置的大一些
             int len = 0;
-            while((len = buffInputStream.read(buff)) > 0) {
+            while ((len = buffInputStream.read(buff)) > 0) {
                 //把文件流写入到response的输出流中，供请求端请求
                 outputStream.write(buff, 0, len);
                 outputStream.flush();
@@ -71,14 +71,14 @@ public class FileServer {
             e.printStackTrace();
         } finally {
             try {
-                if(buffInputStream != null) {
+                if (buffInputStream != null) {
                     buffInputStream.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                if(outputStream != null) {
+                if (outputStream != null) {
                     outputStream.close();
                 }
             } catch (IOException e) {
@@ -98,9 +98,9 @@ public class FileServer {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             //压缩文件
             zipOut = new GZIPOutputStream(byteArrayOutputStream);
-            byte[] buff = new byte[1024*1024]; //如果是稍微大的文件，这里配置的大一些
+            byte[] buff = new byte[1024 * 1024]; //如果是稍微大的文件，这里配置的大一些
             int len = 0;
-            while((len = buffInputStream.read(buff)) > 0) {
+            while ((len = buffInputStream.read(buff)) > 0) {
                 //把文件流写入到byteArrayOutputStream里面
                 zipOut.write(buff, 0, len);
                 zipOut.flush();
@@ -112,21 +112,21 @@ public class FileServer {
             e.printStackTrace();
         } finally {
             try {
-                if(buffInputStream != null) {
+                if (buffInputStream != null) {
                     buffInputStream.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                if(outputStream != null) {
+                if (outputStream != null) {
                     outputStream.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
             try {
-                if(zipOut != null) {
+                if (zipOut != null) {
                     zipOut.close();
                 }
             } catch (IOException e) {
@@ -144,7 +144,7 @@ public class FileServer {
         file = new File("D:\\testFile\\test2.gz");
         files.add(file);
 
-        for(File file1 : files) {
+        for (File file1 : files) {
             readDetailDataToByteArray(byteArray, file1);
         }
     }
@@ -153,7 +153,7 @@ public class FileServer {
         BufferedInputStream bufferedInputStream = null;
         try {
             bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
-            byte[] b = new byte[1024*1024];
+            byte[] b = new byte[1024 * 1024];
             int j;
             while ((j = bufferedInputStream.read(b)) > 0) {
                 byteArray.write(b, 0, j);
@@ -165,7 +165,7 @@ public class FileServer {
             e.printStackTrace();
         } finally {
             try {
-                if(bufferedInputStream != null) {
+                if (bufferedInputStream != null) {
                     bufferedInputStream.close();
                 }
             } catch (Exception e) {

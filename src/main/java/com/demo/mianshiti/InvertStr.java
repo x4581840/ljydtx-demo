@@ -15,13 +15,14 @@ public class InvertStr {
 
     /**
      * 不使用中间变量，逆置字符串
+     *
      * @param originStr
      * @return
      */
     public String invertStr(String originStr) {
         String result = "";
 
-        for(int i=originStr.length()-1;i>=0;i--){
+        for (int i = originStr.length() - 1; i >= 0; i--) {
             System.out.print(originStr.charAt(i));
         }
 

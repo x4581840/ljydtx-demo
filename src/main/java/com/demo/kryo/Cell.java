@@ -19,7 +19,6 @@ public class Cell implements Serializable {
     private String test;
 
 
-
     public String getName() {
         return name;
     }

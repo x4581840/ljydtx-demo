@@ -42,7 +42,7 @@ class Father extends Grandfather {
     }
 }
 
-class Son1 extends Father{
+class Son1 extends Father {
 
 }
 

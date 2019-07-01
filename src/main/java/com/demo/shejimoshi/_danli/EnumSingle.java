@@ -5,7 +5,7 @@ import java.util.Random;
 
 /**
  * 枚举式 单例
- *
+ * <p>
  * 使用枚举来实现单实例控制会更加简洁，而且无偿地提供了序列化机制，并由JVM从根本上提供保障，
  * 绝对防止多次实例化，是更简洁、高效、安全的实现单例的方式。
  */
@@ -18,7 +18,7 @@ public enum EnumSingle {
     /**
      * 单例可以有自己的操作
      */
-    public void singletonOperation(){
+    public void singletonOperation() {
         //功能处理
     }
 

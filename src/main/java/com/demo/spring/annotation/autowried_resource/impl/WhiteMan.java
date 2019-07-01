@@ -15,6 +15,6 @@ public class WhiteMan implements IHuman {
 
     @Override
     public void printMessage(String name) {
-        System.out.println("我是白人，我的名字叫做："+name);
+        System.out.println("我是白人，我的名字叫做：" + name);
     }
 }

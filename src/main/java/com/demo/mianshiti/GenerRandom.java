@@ -14,6 +14,7 @@ public class GenerRandom {
 
     /**
      * 生成四位不相同的随机数(注意首位不能为0)
+     *
      * @return
      */
     public String generFourRandom() {
@@ -22,11 +23,11 @@ public class GenerRandom {
         int i = 0;
         while (result.length() < 4) {
             int r = generOneRandomLessTen();
-            if(i == 0 && r == 0) {
+            if (i == 0 && r == 0) {
                 i++;
                 continue;
             }
-            if(!sets.contains(r)) {
+            if (!sets.contains(r)) {
                 result += r;
                 sets.add(r);
             }

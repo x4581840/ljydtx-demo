@@ -41,15 +41,15 @@ public class CacheTest {
                     }
                 });
 
-      for (int i = 0; i < 20; i++) {
-          // 从缓存中得到数据，由于我们没有设置过缓存，所以需要通过CacheLoader加载缓存数据
-          Student student = studentCache.get(i);
-          System.out.println(student);
-          // 休眠1秒
-          TimeUnit.SECONDS.sleep(1);
-      }
+        for (int i = 0; i < 20; i++) {
+            // 从缓存中得到数据，由于我们没有设置过缓存，所以需要通过CacheLoader加载缓存数据
+            Student student = studentCache.get(i);
+            System.out.println(student);
+            // 休眠1秒
+            TimeUnit.SECONDS.sleep(1);
+        }
 //
-//        Student student = studentCache.get(1);
+//        StudentSimpleClone student = studentCache.get(1);
 //        System.out.println(student);
 //        student = studentCache.get(1);
 //        System.out.println(student);

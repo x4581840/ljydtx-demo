@@ -118,8 +118,8 @@ public class ObjectMapperTest {
 
     /**
      * Include.ALWAYS  是序列化对像所有属性
-       Include.NON_NULL 只有不为null的字段才被序列化
-       Include.NON_EMPTY 如果为null或者 空字符串和空集合都不会被序列化
+     Include.NON_NULL 只有不为null的字段才被序列化
+     Include.NON_EMPTY 如果为null或者 空字符串和空集合都不会被序列化
      */
 
 
@@ -143,9 +143,10 @@ public class ObjectMapperTest {
         String personStr = objectMapper.writeValueAsString(persons);
 
         //反序列化为List<user> 集合,1需要通过 TypeReference 来具体传递值
-        List<Person> persons2 = objectMapper.readValue(personStr, new TypeReference<List<Person>>() {});
+        List<Person> persons2 = objectMapper.readValue(personStr, new TypeReference<List<Person>>() {
+        });
 
-        for(Person person : persons2) {
+        for (Person person : persons2) {
             System.out.println(person);
         }
 
@@ -153,7 +154,7 @@ public class ObjectMapperTest {
         JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, Person.class);
         List<Person> persons3 = objectMapper.readValue(personStr, javaType);
 
-        for(Person person : persons3) {
+        for (Person person : persons3) {
             System.out.println(person);
         }
     }

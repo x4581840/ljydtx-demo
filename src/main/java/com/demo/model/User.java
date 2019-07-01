@@ -1,6 +1,8 @@
 package com.demo.model;
 
 
+import javax.persistence.Transient;
+
 public class User {
     private Integer id;
 
@@ -13,6 +15,19 @@ public class User {
     private String userPassword;
 
     private String userInfo;
+
+
+    //不加@Transient，可以插入数据
+    //@Transient //javax.persistence.Transient
+    public String sex; //数据库中没有这个字段
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
     public Integer getId() {
         return id;

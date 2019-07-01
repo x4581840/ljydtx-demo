@@ -44,7 +44,7 @@ public class HumanController {
     //@Autowired //容器中没有实例，报错
     //private ICar car;
 
-    @Autowired(required=false) //容器中没有实例，但是没报错，car1是null
+    @Autowired(required = false) //容器中没有实例，但是没报错，car1是null
     private ICar car1;
 
     @RequestMapping("/printMessage")

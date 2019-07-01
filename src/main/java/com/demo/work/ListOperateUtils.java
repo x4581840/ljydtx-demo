@@ -23,7 +23,7 @@ public class ListOperateUtils {
         }
 
         if (s instanceof ArrayList) {
-            ArrayList<T> as = (ArrayList<T>)s;
+            ArrayList<T> as = (ArrayList<T>) s;
             as.ensureCapacity(index + 1);
         }
 
@@ -51,7 +51,7 @@ public class ListOperateUtils {
         }
 
         if (s instanceof ArrayList) {
-            ArrayList<T> as = (ArrayList<T>)s;
+            ArrayList<T> as = (ArrayList<T>) s;
             as.ensureCapacity(index + 1);
         }
 

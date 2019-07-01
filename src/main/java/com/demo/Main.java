@@ -18,7 +18,8 @@ public class Main {
     private static final int ITERATIONS = 10000; //iterations迭代次数
     private static final int KEY_LENGTH = 256;
 
-    private Main() {}
+    private Main() {
+    }
 
     public static void objPoolTest() {
         Integer i1 = 40;
@@ -84,8 +85,8 @@ public class Main {
         System.out.println(res);
         System.out.println(res.length());*/
 
-        /*List<Student> stus = Lists.newArrayList(new Student(1,"tom"),new Student(2,"tom"),new Student(null,"tom"));
-        List<Integer> ids = stus.stream().map(Student::getId).collect(Collectors.toList());
+        /*List<StudentSimpleClone> stus = Lists.newArrayList(new StudentSimpleClone(1,"tom"),new StudentSimpleClone(2,"tom"),new StudentSimpleClone(null,"tom"));
+        List<Integer> ids = stus.stream().map(StudentSimpleClone::getId).collect(Collectors.toList());
         ids.removeAll(Collections.singletonList(null));
         System.out.println(ids.size());*/
 
@@ -146,18 +147,38 @@ public class Main {
 //        System.out.println(res.size());
         System.out.println(list.size());*/
 
-        System.out.println(System.currentTimeMillis());
+        /*System.out.println(System.currentTimeMillis());
 
         List<String> list = new ArrayList<>();
         list.add("b");
         list.add("a");
         System.out.println(list);
         list.remove("a");
+        System.out.println(list);*/
+
+        /*BigDecimal bd = BigDecimal.TEN;
+        System.out.println(BigDecimal.ZERO.compareTo(bd));
+        bd = bd.negate();
+        System.out.println(bd);*/
+
+        /*String a = "龙a";
+        a = a.toUpperCase();
+        System.out.println(a);
+        System.out.println(a);*/
+
+
+        List<Student> list = new ArrayList<>();
+        List<List<Student>> list1 = new ArrayList<>();
+        list.add(new Student(1, "a"));
+        list1.add(list);
         System.out.println(list);
+        System.out.println(list1);
+
+        System.out.println(new Student(2, "b"));
 
     }
 
-    static class Student{
+    static class Student {
 
         private Integer id;
         private String name;
@@ -209,7 +230,7 @@ public class Main {
         String returnValue = null;
         byte[] securePassword = hash(password.toCharArray(), salt.getBytes());
 
-        System.out.println("securePassword:"+securePassword.length);
+        System.out.println("securePassword:" + securePassword.length);
         returnValue = Base64.getEncoder().encodeToString(securePassword);
 
         return returnValue;
@@ -220,7 +241,7 @@ public class Main {
         String str = "abcdef1234093ABC/}];'";
 
         char[] chars = str.toCharArray();
-        for(char c : chars) {
+        for (char c : chars) {
             System.out.print(c);
         }
         System.out.println();
@@ -228,14 +249,14 @@ public class Main {
 
         System.out.println(Character.MIN_VALUE);
         System.out.println('\u0000');
-        System.out.println( );
-        for(char c : chars) {
+        System.out.println();
+        for (char c : chars) {
             System.out.print(c);
         }
 
         System.out.println("=======");
         byte[] bytes = str.getBytes();
-        for(byte b : bytes) {
+        for (byte b : bytes) {
             System.out.println(b);
         }
 

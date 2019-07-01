@@ -29,12 +29,12 @@ public class CallableTest implements Callable<String> {
         //普通线程
         CallableTest ct = new CallableTest("putong");
         String result = ct.call();
-        System.out.println("result1:"+result);
+        System.out.println("result1:" + result);
 
         //提交任务
         CallableTest ct1 = new CallableTest("renwu");
         Future<String> res = executorService.submit(ct1);
-        System.out.println("result2:"+res.get());
+        System.out.println("result2:" + res.get());
 
         //提交任务
         RunnableTest rt = new RunnableTest();

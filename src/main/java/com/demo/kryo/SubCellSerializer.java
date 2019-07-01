@@ -7,7 +7,6 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
 
-
 public class SubCellSerializer extends Serializer<SubCell> {
 
     @Override

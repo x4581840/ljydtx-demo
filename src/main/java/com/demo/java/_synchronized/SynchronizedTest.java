@@ -9,18 +9,18 @@ public class SynchronizedTest {
         }
     }
 
-    public synchronized void doSth(){
+    public synchronized void doSth() {
         System.out.println("Hello World");
     }
 
-    public void doSth1(){
-        synchronized (SynchronizedTest.class){
+    public void doSth1() {
+        synchronized (SynchronizedTest.class) {
             System.out.println("Hello World");
         }
     }
 
-    public void doSth2(){
-        synchronized(this){
+    public void doSth2() {
+        synchronized (this) {
             System.out.println("Hello World");
         }
     }

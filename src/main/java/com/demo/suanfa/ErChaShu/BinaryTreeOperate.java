@@ -4,11 +4,12 @@ public class BinaryTreeOperate {
 
     /**
      * 翻转二叉树（左子树和右子树 调换位置）
+     *
      * @param root
      * @return
      */
     public static TreeNode invertTree(TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return null;
         }
         root.left = invertTree(root.left);

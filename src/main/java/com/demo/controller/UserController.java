@@ -24,8 +24,8 @@ public class UserController {
 
     @RequestMapping("/test_long")
     public void test_long() {
-       System.out.println("====");
-       System.out.println("----");
+        System.out.println("====");
+        System.out.println("----");
     }
 
     @RequestMapping("/test_long1")
@@ -81,6 +81,11 @@ public class UserController {
         public void run() {
             userBo.testJishu();
         }
+    }
+
+    @RequestMapping("/getName")
+    public String getName() {
+        return "龙建勇";
     }
 }
 

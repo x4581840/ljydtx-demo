@@ -29,19 +29,19 @@ public class MapDemo {
 
         //左集(即差集，返回只存在于map独有的数据)
         mapd.entriesOnlyOnLeft().entrySet().forEach(entry -> {
-            System.out.println("entriesOnlyOnLeft "+entry.getKey()+":"+entry.getValue());
+            System.out.println("entriesOnlyOnLeft " + entry.getKey() + ":" + entry.getValue());
         });
         //entriesOnlyOnLeft 3:香港
 
         //右集(即差集，返回只存在于map1独有的数据)
         mapd.entriesOnlyOnRight().entrySet().forEach(entry -> {
-            System.out.println("entriesOnlyOnleft "+entry.getKey()+":"+entry.getValue());
+            System.out.println("entriesOnlyOnleft " + entry.getKey() + ":" + entry.getValue());
         });
         //entriesOnlyOnleft 4:深圳
 
         //交集
         mapd.entriesInCommon().entrySet().forEach(entry -> {
-            System.out.println("entriesInCommon "+entry.getKey()+":"+entry.getValue());
+            System.out.println("entriesInCommon " + entry.getKey() + ":" + entry.getValue());
         });
         //entriesInCommon 1:上海
         //entriesInCommon 2:北京
@@ -55,29 +55,29 @@ public class MapDemo {
         //并集，结果【1，2，3，4，5】
         Sets.SetView<Integer> union = Sets.union(setF, setT);
         union.forEach(i -> {
-            System.out.println("并集元素："+i);
+            System.out.println("并集元素：" + i);
         });
 
         //差集，返回只存在于setF独有的数据，结果【1，2】
         Sets.SetView<Integer> difference = Sets.difference(setF, setT);
         difference.forEach(i -> {
-            System.out.println("差集元素："+i);
+            System.out.println("差集元素：" + i);
         });
 
         //交集，结果【3】
         Sets.SetView<Integer> intersection = Sets.intersection(setF, setT);
         intersection.forEach(i -> {
-            System.out.println("交集元素："+i);
+            System.out.println("交集元素：" + i);
         });
     }
 
     private static void test_3() {
-        List list1 =new ArrayList();
+        List list1 = new ArrayList();
         list1.add("1111");
         list1.add("2222");
         list1.add("3333");
 
-        List list2 =new ArrayList();
+        List list2 = new ArrayList();
         list2.add("3333");
         list2.add("4444");
         list2.add("5555");
@@ -92,7 +92,7 @@ public class MapDemo {
 //        list2.removeAll(list1);
 //        list1.addAll(list2);
 
-        Iterator<String> it=list1.iterator();
+        Iterator<String> it = list1.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
 
@@ -100,7 +100,7 @@ public class MapDemo {
     }
 
     private static void test_4() {
-        List list1 =new ArrayList();
+        List list1 = new ArrayList();
         list1.add("1111");
         list1.add("2222");
         list1.add("3333");

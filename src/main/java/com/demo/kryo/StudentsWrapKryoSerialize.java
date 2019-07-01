@@ -10,7 +10,7 @@ public class StudentsWrapKryoSerialize extends AbstractKryoSerialize {
 
     static {
         int availableProcessors = Runtime.getRuntime().availableProcessors();
-        kryoPool = new KryoPool((int)(availableProcessors * 1.6), () -> {
+        kryoPool = new KryoPool((int) (availableProcessors * 1.6), () -> {
             Kryo kryo = new Kryo();
             kryo.register(Student.class, new StudentSerializer());
             kryo.register(StudentsWrap.class);

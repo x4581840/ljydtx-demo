@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.mapper.impl.StudentImplMapper" >
+
+    <select id="likeName" resultMap="com.demo.mapper.StudentMapper.BaseResultMap">
+        select * from student where name like concat('%', #{likeName} ,'%')
+    </select>
+
+    <select id="getById" resultType="com.demo.model.Student">
+        select * from student where id = #{id}
+    </select>
+
+    <select id="getNameById" resultType="java.lang.String">
+        select name from student where id = #{id}
+    </select>
+
+</mapper>

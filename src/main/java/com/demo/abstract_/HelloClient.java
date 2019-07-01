@@ -4,7 +4,7 @@ public class HelloClient extends AbstractClient {
 
     @Override
     public void abstract_method(String msg) {
-        System.out.println("HelloClient-"+msg);
+        System.out.println("HelloClient-" + msg);
     }
 
     @Override
@@ -13,6 +13,6 @@ public class HelloClient extends AbstractClient {
     }
 
     public HelloClient(String msg) {
-        System.out.println("HelloClient(String msg)"+msg);
+        System.out.println("HelloClient(String msg)" + msg);
     }
 }

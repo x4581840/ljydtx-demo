@@ -1,6 +1,7 @@
 package com.demo;
 
 
+import com.demo.dynamic_datasource.datasource.DynamicDataSourceRegister;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -10,6 +11,8 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 
 import javax.servlet.Filter;
 
@@ -17,12 +20,14 @@ import javax.servlet.Filter;
 @SpringBootApplication//(scanBasePackages = {"com.demo"})
 @ComponentScan(basePackages = {"com.demo"})
 @ServletComponentScan(basePackages = "com.demo.springboot.filter")
+@Import(DynamicDataSourceRegister.class)
 //@SpringBootApplication里面包含了@EnableAutoConfiguration
+//@EnableAspectJAutoProxy
 public class LjydtxDemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LjydtxDemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LjydtxDemoApplication.class, args);
+    }
 
 
 
@@ -51,9 +56,9 @@ public class LjydtxDemoApplication {
 	}
 
 	*//**
-	 * springboot中使用FilterRegistrationBean注册过滤器
-	 * @return
-	 *//*
+     * springboot中使用FilterRegistrationBean注册过滤器
+     * @return
+     *//*
 
 	//
 	@Bean

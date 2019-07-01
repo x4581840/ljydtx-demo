@@ -29,7 +29,7 @@ public class UserBoImpl /*extends SqlSessionDaoSupport*/ implements UserBo {
     @Transactional
     public void testJishu() {
         User user = userMapper.lockUserById(1);
-        user.setUserAge(user.getUserAge()+1);
+        user.setUserAge(user.getUserAge() + 1);
         userMapper.updateByPrimaryKey(user);
     }
 

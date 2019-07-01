@@ -24,13 +24,13 @@ public class ReadFileTest {
         BufferedOutputStream bufferedOutputStream =
                 new BufferedOutputStream(new FileOutputStream(new File(targetPath)));
         long begin = System.currentTimeMillis();
-        while((len = bufferedInputStream.read(buff)) != -1) {
+        while ((len = bufferedInputStream.read(buff)) != -1) {
             bufferedOutputStream.write(buff, 0, len);
             bufferedOutputStream.flush();
         }
         bufferedOutputStream.close();
         bufferedInputStream.close();
-        System.out.println("readFile1 cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("readFile1 cost:" + (System.currentTimeMillis() - begin));
     }
 
     public static void readFile2(String path, String targetPath) throws IOException {
@@ -41,10 +41,9 @@ public class ReadFileTest {
         FileChannel outChannel = outputStream.getChannel();
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         long begin = System.currentTimeMillis();
-        while(true)
-        {
+        while (true) {
             int eof = inChannel.read(byteBuffer);
-            if(eof == -1 ) break;
+            if (eof == -1) break;
             byteBuffer.flip();
             outChannel.write(byteBuffer);
             byteBuffer.clear();
@@ -52,7 +51,7 @@ public class ReadFileTest {
 
         inChannel.close();
         outChannel.close();
-        System.out.println("readFile2 cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("readFile2 cost:" + (System.currentTimeMillis() - begin));
     }
 
     public static void readFile3(String path, String targetPath) throws IOException {
@@ -62,16 +61,15 @@ public class ReadFileTest {
         FileChannel inChannel = inputStream.getChannel();
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         long begin = System.currentTimeMillis();
-        while(true)
-        {
+        while (true) {
             int eof = inChannel.read(byteBuffer);
-            if(eof == -1 ) break;
+            if (eof == -1) break;
             byteBuffer.flip();
             outputStream.write(byteBuffer.array());
             byteBuffer.clear();
         }
 
-        System.out.println("readFile3 cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("readFile3 cost:" + (System.currentTimeMillis() - begin));
         inChannel.close();
         outputStream.close();
     }
@@ -82,9 +80,9 @@ public class ReadFileTest {
         byte[] buff = new byte[1024];
         int len = 0;
         long begin = System.currentTimeMillis();
-        while((len = bufferedInputStream.read(buff)) != -1) {
+        while ((len = bufferedInputStream.read(buff)) != -1) {
         }
-        System.out.println("readFile4 cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("readFile4 cost:" + (System.currentTimeMillis() - begin));
         bufferedInputStream.close();
     }
 
@@ -93,9 +91,9 @@ public class ReadFileTest {
         byte[] buff = new byte[1024];
         int len = 0;
         long begin = System.currentTimeMillis();
-        while((len = fileInputStream.read(buff)) != -1) {
+        while ((len = fileInputStream.read(buff)) != -1) {
         }
-        System.out.println("readFile5 cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("readFile5 cost:" + (System.currentTimeMillis() - begin));
         fileInputStream.close();
     }
 
@@ -105,15 +103,14 @@ public class ReadFileTest {
         FileChannel inChannel = inputStream.getChannel();
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         long begin = System.currentTimeMillis();
-        while(true)
-        {
+        while (true) {
             int eof = inChannel.read(byteBuffer);
-            if(eof == -1 ) break;
+            if (eof == -1) break;
             byteBuffer.flip();
             byteBuffer.clear();
         }
 
         inChannel.close();
-        System.out.println("readFile6 cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("readFile6 cost:" + (System.currentTimeMillis() - begin));
     }
 }

@@ -13,6 +13,6 @@ import org.springframework.stereotype.Component;
 public class UserDao {
 
     public void printMsg(String message) {
-        System.out.println("msg:"+message);
+        System.out.println("msg:" + message);
     }
 }

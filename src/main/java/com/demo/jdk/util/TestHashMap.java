@@ -50,7 +50,7 @@ class Dog {
 
     public boolean equals(Object o) {
         boolean reult = ((Dog) o).color == this.color;
-        System.out.println("color "+this.color+",equals result:"+reult);
+        System.out.println("color " + this.color + ",equals result:" + reult);
         return reult;
     }
 
@@ -58,7 +58,7 @@ class Dog {
         return color.length();
     }
 
-    public String toString(){
+    public String toString() {
         return color + " dog";
     }
 }

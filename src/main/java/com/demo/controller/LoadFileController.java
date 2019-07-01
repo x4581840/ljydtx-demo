@@ -21,7 +21,7 @@ public class LoadFileController {
         FileInputStream file = new FileInputStream("D:/test.txt");
 
         byte[] readbuff = new byte[1024];
-        while(file.read(readbuff) != -1) {
+        while (file.read(readbuff) != -1) {
             fileStream.write(readbuff);
         }
         file.close();
@@ -48,8 +48,7 @@ public class LoadFileController {
     }
 
     @RequestMapping("showuser")
-    public Object showUser()
-    {
+    public Object showUser() {
         return JSON.toJSONString("hhh");
     }
 

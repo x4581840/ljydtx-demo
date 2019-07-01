@@ -50,7 +50,7 @@ public class OptionalTest {
 
         //ifPresent() 方法。该方法除了执行检查，还接受一个Consumer(消费者) 参数，
         // 如果对象不是空的，就对执行传入的 Lambda 表达式：
-        opt.ifPresent( u -> assertEquals(opt.get(), "john@gmail.com"));
+        opt.ifPresent(u -> assertEquals(opt.get(), "john@gmail.com"));
 
         assertEquals("john@gmail.com", opt.get());
         System.out.println(opt.get());
@@ -58,8 +58,8 @@ public class OptionalTest {
 
     /**
      * Optional 类提供了 API 用以返回对象值，或者在对象为空的时候返回默认值。
-     这里你可以使用的第一个方法是 orElse()，
-     它的工作方式非常直接，如果有值则返回该值，否则返回传递给它的参数值
+     * 这里你可以使用的第一个方法是 orElse()，
+     * 它的工作方式非常直接，如果有值则返回该值，否则返回传递给它的参数值
      */
     @Test
     public void whenEmptyValue_thenReturnDefaultOrIgnore() {
@@ -71,7 +71,7 @@ public class OptionalTest {
         assertEquals(user2.getUserName(), result.getUserName());*/
 
         //如果对象的初始值不是 null，那么默认值会被忽略：
-        User user = new User("zhangSan","1234");
+        User user = new User("zhangSan", "1234");
         User user2 = new User("lisi", "1234");
         User result = Optional.ofNullable(user).orElse(user2);
 
@@ -133,7 +133,7 @@ public class OptionalTest {
     public void whenThrowException_thenOk() {
         User user = null;
         User result = Optional.ofNullable(user)
-                .orElseThrow( () -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException());
         //这里，如果 user 值为 null，会抛出 IllegalArgumentException。
         //这个方法让我们有更丰富的语义，可以决定抛出什么样的异常，而不总是抛出 NullPointerException
     }
@@ -271,15 +271,15 @@ public class OptionalTest {
     }
 
     public static Optional<String> onOpen(boolean flag) {
-        System.out.println("flag:"+flag);
-        if(flag) {
+        System.out.println("flag:" + flag);
+        if (flag) {
             return Optional.empty();
-        }else {
+        } else {
             return Optional.of("open error");
         }
     }
 
-    public static String  onMessage() {
+    public static String onMessage() {
         System.out.println("onMessage");
         return "onMessage";
     }

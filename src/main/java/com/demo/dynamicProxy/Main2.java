@@ -13,7 +13,7 @@ public class Main2 {
         enhancer.setSuperclass(UserServiceImpl.class);
         enhancer.setCallback(cglibProxy);
 
-        UserService o = (UserService)enhancer.create();
+        UserService o = (UserService) enhancer.create();
         System.out.println(o.getName(1));
         System.out.println(o.getAge(1));
     }

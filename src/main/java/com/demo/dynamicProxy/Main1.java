@@ -33,7 +33,7 @@ public class Main1 {
         InvocationHandler invocationHandler = new MyInvocationHandler(userService);
         //下面两种效果都一样,think in java 是第一种
         UserService userServiceProxy = (UserService) Proxy.newProxyInstance(userService.getClass().getClassLoader(),
-                            userService.getClass().getInterfaces(), invocationHandler);
+                userService.getClass().getInterfaces(), invocationHandler);
         /*UserService userServiceProxy = (UserService) Proxy.newProxyInstance(invocationHandler.getClass().getClassLoader(),
                 userService.getClass().getInterfaces(), invocationHandler);*/
 

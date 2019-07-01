@@ -11,7 +11,7 @@ public class People {
         this.age = age;
     }
 
-    public void setAge(int age){
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -22,13 +22,13 @@ public class People {
     @Override
     public int hashCode() {
         // TODO Auto-generated method stub
-        return name.hashCode()*37+age;
+        return name.hashCode() * 37 + age;
     }
 
     @Override
     public boolean equals(Object obj) {
         // TODO Auto-generated method stub
-        return this.name.equals(((People)obj).name) && this.age== ((People)obj).age;
+        return this.name.equals(((People) obj).name) && this.age == ((People) obj).age;
     }
 
 
@@ -87,7 +87,7 @@ public class People {
         Person p2 = new Person("jack", 2);
 
         System.out.println(p1.equals(p2));
-        System.out.println(p1.hashCode()+","+p2.hashCode());
+        System.out.println(p1.hashCode() + "," + p2.hashCode());
 
     }
 
@@ -118,7 +118,7 @@ public class People {
     }
 }
 
-    //下面这段话摘自Effective Java一书：
+//下面这段话摘自Effective Java一书：
        /*在程序执行期间，只要equals方法的比较操作用到的信息没有被修改，那么对这同一个对象调用多次，
             hashCode方法必须始终如一地返回同一个整数。
             如果两个对象根据equals方法比较是相等的，那么调用两个对象的hashCode方法必须返回相同的整数结果。

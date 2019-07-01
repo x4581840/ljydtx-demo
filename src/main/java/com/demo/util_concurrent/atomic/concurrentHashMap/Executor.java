@@ -15,7 +15,7 @@ public class Executor {
         //collection.put("key", 1);
         int counter = 0;
         synchronized (map) {
-            if(map.containsKey("key")) {
+            if (map.containsKey("key")) {
                 counter = map.get("key");
             }
             map.put("key", counter++);

@@ -13,6 +13,6 @@ public class Aodi implements ICar {
 
     @Override
     public void printMessage(String name) {
-        System.out.println("我是奥迪，我的名字是："+name);
+        System.out.println("我是奥迪，我的名字是：" + name);
     }
 }

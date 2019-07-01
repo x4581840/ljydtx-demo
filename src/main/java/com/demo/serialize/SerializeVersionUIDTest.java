@@ -35,20 +35,19 @@ public class SerializeVersionUIDTest {
 
 
     /**
-     *
-     * @author crazyandcoder
-     * @Title: 序列化Person对象，将其存储到 E:/hello.txt文件中
      * @param
      * @return void
      * @throws
+     * @author crazyandcoder
+     * @Title: 序列化Person对象，将其存储到 E:/hello.txt文件中
      * @date [2015-8-5 上午11:21:27]
      */
     private static void SerializePerson() {
-        Person person =new Person();
+        Person person = new Person();
         person.setAge(30);
         ObjectOutputStream outputStream = null;
         try {
-            outputStream=new ObjectOutputStream(new FileOutputStream("test.obj"));
+            outputStream = new ObjectOutputStream(new FileOutputStream("test.obj"));
             outputStream.writeObject(person);
             System.out.println("序列化成功。");
         } catch (FileNotFoundException e) {
@@ -70,11 +69,11 @@ public class SerializeVersionUIDTest {
     /**
      * 执行反序列化过程生产Person对象
      *
-     * @author crazyandcoder
-     * @Title: DeserializePerson
      * @param @return
      * @return People
      * @throws
+     * @author crazyandcoder
+     * @Title: DeserializePerson
      * @date [2015-8-5 下午1:30:12]
      */
     private static Person DeserializePerson() {

@@ -47,7 +47,7 @@ public class BitSetTest2 {
         int temp;
         for (int i = 0; i < NUM; i++) {
             temp = random.nextInt(NUM2) + 1;
-            while(input.get(temp)) {
+            while (input.get(temp)) {
                 temp = random.nextInt(NUM2) + 1;
             }
             input.set(temp);
