@@ -34,7 +34,7 @@ public class MemcacheConfiguration {
     private boolean aliveCheck;
 
     @Bean
-    public SockIOPool sockIOPool () {
+    public SockIOPool sockIOPool() {
         SockIOPool pool = SockIOPool.getInstance();
         pool.setServers(servers);
         pool.setFailover(failover);
@@ -50,7 +50,7 @@ public class MemcacheConfiguration {
     }
 
     @Bean
-    public MemCachedClient memCachedClient(){
+    public MemCachedClient memCachedClient() {
         return new MemCachedClient();
     }
 

@@ -8,14 +8,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Executor {
     private Map<String, Integer> map = new ConcurrentHashMap<>();
-    //Map<String, Integer> map = Collections.synchronizedMap(new HashMap<>());
+    //Map<String, Integer> collection = Collections.synchronizedMap(new HashMap<>());
 
     public void test() {
 
-        //map.put("key", 1);
+        //collection.put("key", 1);
         int counter = 0;
         synchronized (map) {
-            if(map.containsKey("key")) {
+            if (map.containsKey("key")) {
                 counter = map.get("key");
             }
             map.put("key", counter++);

@@ -35,7 +35,7 @@ public abstract class AbstractKryoSerialize implements ISerialize {
              Input input = new Input(bufferedInputStream);) {
             kryo = kryoPool.obtain();
 
-            return (T)kryo.readObject(input, clazz);
+            return (T) kryo.readObject(input, clazz);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         } finally {

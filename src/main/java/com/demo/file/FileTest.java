@@ -32,33 +32,33 @@ public class FileTest {
         BufferedReader br = null;
         String s = null;
 
-        if(file.isDirectory()) {
+        if (file.isDirectory()) {
             File[] files = file.listFiles();
-            for(File f : files) {
+            for (File f : files) {
                 factFiles(f);
             }
         } else {
             try {
                 br = new BufferedReader(new FileReader(file));
                 boolean comm = false;
-                while((s = br.readLine()) != null) {
-                    if(s.startsWith("/*") && s.endsWith("*/")) {
+                while ((s = br.readLine()) != null) {
+                    if (s.startsWith("/*") && s.endsWith("*/")) {
                         codeComments++;
-                    } else if(s.trim().startsWith("//")) {
+                    } else if (s.trim().startsWith("//")) {
                         codeComments++;
                     }/* else if(s.trim().startsWith("*")) {
                         codeComments++;
-                    }*/ else if(s.trim().startsWith("@Override")) {
+                    }*/ else if (s.trim().startsWith("@Override")) {
                         codeComments++;
-                    } else if(s.startsWith("/*") && !s.endsWith("*/")) {
+                    } else if (s.startsWith("/*") && !s.endsWith("*/")) {
                         codeComments++;
                         comm = true;
-                    } else if(!s.startsWith("/*") && s.endsWith("*/")) {
+                    } else if (!s.startsWith("/*") && s.endsWith("*/")) {
                         codeComments++;
                         comm = false;
-                    } else if(comm) {
+                    } else if (comm) {
                         codeComments++;
-                    } else if(s.trim().length() < 1) {
+                    } else if (s.trim().length() < 1) {
                         codeBlank++;
                     } else {
                         code++;
@@ -74,10 +74,10 @@ public class FileTest {
     }
 
     /**
+     * @return void 返回类型
      * @Title: getallfile
      * @Description: 获取当前路径下的所有文件
      * @author ruby
-     * @return void 返回类型
      * @date 2018年1月4日 下午2:15:38 @throws
      */
     public static List<File> getallfile(String path) {
@@ -86,10 +86,10 @@ public class FileTest {
     }
 
     /**
+     * @return void 返回类型
      * @Title: getallfile
      * @Description: 获取当前文件夹下的所有文件
      * @author ruby
-     * @return void 返回类型
      * @date 2018年1月4日 下午2:15:38 @throws
      */
     public static List<File> getallfile(File file, List<File> allfilelist) {

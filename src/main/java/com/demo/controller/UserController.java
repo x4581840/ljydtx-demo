@@ -22,6 +22,18 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @RequestMapping("/test_long")
+    public void test_long() {
+        System.out.println("====");
+        System.out.println("----");
+    }
+
+    @RequestMapping("/test_long1")
+    public void test_long1() {
+        System.out.println("tttt");
+        System.out.println("ffff");
+    }
+
     @RequestMapping("/insertUser")
     public User test() {
         User user = new User();
@@ -69,6 +81,11 @@ public class UserController {
         public void run() {
             userBo.testJishu();
         }
+    }
+
+    @RequestMapping("/getName")
+    public String getName() {
+        return "龙建勇";
     }
 }
 

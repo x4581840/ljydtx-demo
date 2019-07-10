@@ -2,17 +2,17 @@ package com.demo.dynamicProxy;
 
 /**
  * 学生代理类，也实现了Person接口，保存一个学生实体，这样既可以代理学生产生行为
- * @author
  *
+ * @author
  */
-public class StudentsProxy implements Person1{
+public class StudentsProxy implements Person1 {
     //被代理的学生
     Student stu;
 
     public StudentsProxy(Person1 stu) {
         // 只代理学生对象
-        if(stu.getClass() == Student.class) {
-            this.stu = (Student)stu;
+        if (stu.getClass() == Student.class) {
+            this.stu = (Student) stu;
         }
     }
 

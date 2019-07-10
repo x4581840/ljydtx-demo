@@ -24,8 +24,9 @@ import java.util.Map;
 
 public class HttpClientTest {
     public static void main(String[] args) throws IOException {
-        sendSms("","","");
+        sendSms("", "", "");
     }
+
     /**
      * post请求传输map数据
      *
@@ -143,10 +144,10 @@ public class HttpClientTest {
         return result;
     }
 
-    public static String sendSms(String uid,String title,String content) throws IOException {
+    public static String sendSms(String uid, String title, String content) throws IOException {
         HttpClient httpclient = HttpClients.createDefault();
 
-        String smsUrl="http://127.0.0.1:8080/loadFile/getExcel";
+        String smsUrl = "http://127.0.0.1:8080/loadFile/getExcel";
         HttpPost httppost = new HttpPost(smsUrl);
         String strResult = "";
 
@@ -154,7 +155,7 @@ public class HttpClientTest {
             JSONObject jobj = new JSONObject();
             jobj.put("uid", uid);
             jobj.put("title", title);
-            jobj.put("content",content);
+            jobj.put("content", content);
 
             System.out.println(jobj.toString());
             //   nameValuePairs.add(new BasicNameValuePair("msg", (jobj.toString())));
@@ -168,7 +169,7 @@ public class HttpClientTest {
             httppost.setEntity(s);
             HttpResponse response = httpclient.execute(httppost);
             if (response.getStatusLine().getStatusCode() == 200) {
-					/*读返回数据*/
+                /*读返回数据*/
                 String conResult = EntityUtils.toString(response.getEntity());
                 System.out.println(conResult);
                /* JSONObject sobj = new JSONObject();
@@ -183,8 +184,8 @@ public class HttpClientTest {
                 }*/
 
             } else {
-                String err = response.getStatusLine().getStatusCode()+"";
-                strResult += "发送失败:"+err;
+                String err = response.getStatusLine().getStatusCode() + "";
+                strResult += "发送失败:" + err;
             }
         } catch (ClientProtocolException e) {
             e.printStackTrace();

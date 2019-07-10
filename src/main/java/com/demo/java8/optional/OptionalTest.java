@@ -50,7 +50,7 @@ public class OptionalTest {
 
         //ifPresent() 方法。该方法除了执行检查，还接受一个Consumer(消费者) 参数，
         // 如果对象不是空的，就对执行传入的 Lambda 表达式：
-        opt.ifPresent( u -> assertEquals(opt.get(), "john@gmail.com"));
+        opt.ifPresent(u -> assertEquals(opt.get(), "john@gmail.com"));
 
         assertEquals("john@gmail.com", opt.get());
         System.out.println(opt.get());
@@ -58,8 +58,8 @@ public class OptionalTest {
 
     /**
      * Optional 类提供了 API 用以返回对象值，或者在对象为空的时候返回默认值。
-     这里你可以使用的第一个方法是 orElse()，
-     它的工作方式非常直接，如果有值则返回该值，否则返回传递给它的参数值
+     * 这里你可以使用的第一个方法是 orElse()，
+     * 它的工作方式非常直接，如果有值则返回该值，否则返回传递给它的参数值
      */
     @Test
     public void whenEmptyValue_thenReturnDefaultOrIgnore() {
@@ -71,7 +71,7 @@ public class OptionalTest {
         assertEquals(user2.getUserName(), result.getUserName());*/
 
         //如果对象的初始值不是 null，那么默认值会被忽略：
-        User user = new User("zhangSan","1234");
+        User user = new User("zhangSan", "1234");
         User user2 = new User("lisi", "1234");
         User result = Optional.ofNullable(user).orElse(user2);
 
@@ -133,21 +133,21 @@ public class OptionalTest {
     public void whenThrowException_thenOk() {
         User user = null;
         User result = Optional.ofNullable(user)
-                .orElseThrow( () -> new IllegalArgumentException());
+                .orElseThrow(() -> new IllegalArgumentException());
         //这里，如果 user 值为 null，会抛出 IllegalArgumentException。
         //这个方法让我们有更丰富的语义，可以决定抛出什么样的异常，而不总是抛出 NullPointerException
     }
 
     /**
      * 转换值
-     * 有很多种方法可以转换 Optional  的值。我们从 map() 和 flatMap() 方法开始
+     * 有很多种方法可以转换 Optional  的值。我们从 collection() 和 flatMap() 方法开始
      */
     @Test
     public void whenMap_thenOk() {
         User user = new User("longjianyong", "1234");
         String userName = Optional.ofNullable(user)
                 .map(u -> u.getUserName()).orElse("aidisheng");
-        //map() 对值应用(调用)作为参数的函数，然后将返回的值包装在 Optional 中
+        //collection() 对值应用(调用)作为参数的函数，然后将返回的值包装在 Optional 中
         assertEquals(userName, user.getUserName());
     }
 
@@ -192,7 +192,7 @@ public class OptionalTest {
         /*String result = Optional.ofNullable(user)
                 .flatMap(u -> u.getAddress())
                 .flatMap(a -> a.getCountry())
-                .map(c -> c.getIsocode())
+                .collection(c -> c.getIsocode())
                 .orElse("default");*/
 
         //上面的代码可以通过方法引用进一步缩减
@@ -241,7 +241,7 @@ public class OptionalTest {
         List<String> emails = Optional.ofNullable(user)
                 .stream()
                 .filter(u -> u.getEmail() != null && u.getEmail().contains("@"))
-                .map( u -> u.getEmail())
+                .collection( u -> u.getEmail())
                 .collect(Collectors.toList());
 
         assertTrue(emails.size() == 1);
@@ -271,15 +271,15 @@ public class OptionalTest {
     }
 
     public static Optional<String> onOpen(boolean flag) {
-        System.out.println("flag:"+flag);
-        if(flag) {
+        System.out.println("flag:" + flag);
+        if (flag) {
             return Optional.empty();
-        }else {
+        } else {
             return Optional.of("open error");
         }
     }
 
-    public static String  onMessage() {
+    public static String onMessage() {
         System.out.println("onMessage");
         return "onMessage";
     }

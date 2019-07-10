@@ -1,4 +1,4 @@
-package com.demo.testmain;
+package com.demo.test.main;
 
 import com.beust.jcommander.internal.Lists;
 import com.beust.jcommander.internal.Maps;
@@ -8,8 +8,6 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import java.io.*;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
@@ -39,7 +37,7 @@ public class ReadFileTest {
             zipOut = new ZipOutputStream(new FileOutputStream("D:\\test_copy1.rar"));
             int len = 0;
             byte[] buf = new byte[1024];
-            while((len=zipIn.read(buf))!=-1){
+            while ((len = zipIn.read(buf)) != -1) {
                 //System.out.println(new String(buf,0,len));
                 zipOut.write(buf);
                 zipOut.flush();
@@ -52,12 +50,12 @@ public class ReadFileTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("cost:" + (System.currentTimeMillis() - begin));
     }
 
     public static void testBufferInputStream(File file) throws IOException {
 
-        if(!file.exists()){
+        if (!file.exists()) {
             throw new RuntimeException("要读取的文件不存在");
         }
         long begin = System.currentTimeMillis();
@@ -65,7 +63,7 @@ public class ReadFileTest {
         FileOutputStream fos = new FileOutputStream(new File("D:\\test_copy.pdf"));
         int len = 0;
         byte[] buf = new byte[1024];
-        while((len=fis.read(buf))!=-1){
+        while ((len = fis.read(buf)) != -1) {
             //System.out.println(new String(buf,0,len));
             fos.write(buf);
             fos.flush();
@@ -73,12 +71,12 @@ public class ReadFileTest {
         fos.close();
         //关资源
         fis.close();
-        System.out.println("cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("cost:" + (System.currentTimeMillis() - begin));
     }
 
     public static void testFileInputStream(File file) throws IOException {
 
-        if(!file.exists()){
+        if (!file.exists()) {
             throw new RuntimeException("要读取的文件不存在");
         }
         long begin = System.currentTimeMillis();
@@ -86,7 +84,7 @@ public class ReadFileTest {
         //FileOutputStream fos = new FileOutputStream(new File("D:\\test_copy.pdf"));
         int len = 0;
         byte[] buf = new byte[1024];
-        while((len=fis.read(buf))!=-1){
+        while ((len = fis.read(buf)) != -1) {
             //System.out.println(new String(buf,0,len));
             //fos.write(buf);
             //fos.flush();
@@ -94,7 +92,7 @@ public class ReadFileTest {
         //fos.close();
         //关资源
         fis.close();
-        System.out.println("cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("cost:" + (System.currentTimeMillis() - begin));
     }
 
     /**
@@ -129,7 +127,7 @@ public class ReadFileTest {
         } finally {
             IOUtils.closeQuietly(reader);
         }
-        System.out.println("cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("cost:" + (System.currentTimeMillis() - begin));
         return res;
     }
 }

@@ -34,12 +34,9 @@ public class CrossUtil {
     /**
      * 产生笛卡尔积当前行索引记录.
      *
-     * @param sourceArgs
-     *            要产生笛卡尔积的源数据
-     * @param record
-     *            每行笛卡尔积的索引组合
-     * @param level
-     *            索引组合的当前计算层级
+     * @param sourceArgs 要产生笛卡尔积的源数据
+     * @param record     每行笛卡尔积的索引组合
+     * @param level      索引组合的当前计算层级
      */
     private static void crossRecord(List<List<Object>> sourceArgs, int[] record, int level) {
         record[level] = record[level] + 1;
@@ -118,7 +115,7 @@ public class CrossUtil {
         lists.add(list2);
         List<List<Object>> res = cross(lists);
         res.forEach(list -> {
-            System.out.println("size:"+list.size());
+            System.out.println("size:" + list.size());
             list.forEach(obj -> {
                 System.out.println(obj);
             });

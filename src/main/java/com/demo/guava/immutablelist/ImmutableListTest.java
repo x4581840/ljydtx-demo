@@ -28,7 +28,7 @@ public class ImmutableListTest {
     public static void main(String[] args) {
 
         String str = "最大值";
-        if(ImmutableListTest.CONSTANT_LIST.contains(str)) {
+        if (ImmutableListTest.CONSTANT_LIST.contains(str)) {
             System.out.println("常量list集合包含此string");
         }
         //此常量list不能add,remove,不然会抛异常的。

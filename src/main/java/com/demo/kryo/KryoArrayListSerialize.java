@@ -13,7 +13,7 @@ public class KryoArrayListSerialize implements ISerialize {
 
     static {
         int availableProcessors = Runtime.getRuntime().availableProcessors();
-        kryoPool = new KryoPool((int)(availableProcessors * 1.6), () -> {
+        kryoPool = new KryoPool((int) (availableProcessors * 1.6), () -> {
             Kryo kryo = new Kryo();
             kryo.register(Student.class, new StudentSerializer());
             kryo.register(StudentsWrap.class);
@@ -45,7 +45,7 @@ public class KryoArrayListSerialize implements ISerialize {
              Input input = new Input(bufferedInputStream);) {
             kryo = kryoPool.obtain();
 
-            return (T)kryo.readObject(input, clazz);
+            return (T) kryo.readObject(input, clazz);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         } finally {

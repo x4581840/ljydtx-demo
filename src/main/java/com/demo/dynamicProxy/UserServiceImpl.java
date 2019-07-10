@@ -1,6 +1,6 @@
 package com.demo.dynamicProxy;
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Override
     public String getName(int id) {

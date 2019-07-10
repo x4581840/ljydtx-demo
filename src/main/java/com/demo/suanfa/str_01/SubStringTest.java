@@ -13,46 +13,46 @@ public class SubStringTest {
         String s = "abcddal";
         long begin = System.currentTimeMillis();
         System.out.println(lengthOfLongestSubstring1(s));
-        System.out.println("cost:"+(System.currentTimeMillis()-begin));
+        System.out.println("cost:" + (System.currentTimeMillis() - begin));
     }
 
     public static int lengthOfLongestSubstring1(String s) {
-        if(StringUtils.isBlank(s)) {
+        if (StringUtils.isBlank(s)) {
             return 0;
         }
-        int max=0;
+        int max = 0;
 
         return max;
     }
 
     public static int lengthOfLongestSubstring2(String s) {
-        if(StringUtils.isBlank(s)) {
+        if (StringUtils.isBlank(s)) {
             return 0;
         }
-        int L=0,R=0;
-        int max=0;
-        String tempStr="";
+        int L = 0, R = 0;
+        int max = 0;
+        String tempStr = "";
         Map<Character, Integer> map = new HashMap<>();
-        while(R < s.length() && L <= R) {
+        while (R < s.length() && L <= R) {
             char c = s.charAt(R);
-            //map.get(c)<L，c可能是在L左边
-            if(!map.containsKey(c) || map.get(c) < L) {
-                map.put(c,R);
+            //collection.get(c)<L，c可能是在L左边
+            if (!map.containsKey(c) || map.get(c) < L) {
+                map.put(c, R);
                 R++;
-            }else {
-                if((R-L)>max) {
+            } else {
+                if ((R - L) > max) {
                     tempStr = s.substring(L, R);
                 }
-                max = Math.max(max, R-L);
+                max = Math.max(max, R - L);
                 L = map.get(c) + 1;
                 map.put(c, R);
                 R++;
             }
         }
-        if((R-L)>max) {
+        if ((R - L) > max) {
             tempStr = s.substring(L, R);
         }
-        System.out.println("longest substring is: "+tempStr);
-        return Math.max(R-L, max);
+        System.out.println("longest substring is: " + tempStr);
+        return Math.max(R - L, max);
     }
 }

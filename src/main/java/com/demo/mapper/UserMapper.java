@@ -2,7 +2,9 @@ package com.demo.mapper;
 
 import com.demo.model.User;
 import com.demo.model.UserExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import javax.annotation.Resource;

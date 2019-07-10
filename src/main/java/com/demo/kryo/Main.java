@@ -84,4 +84,4 @@ public class Main {
         System.out.println(cellsWrap1.getMaps().get("SUB").getName());
         System.out.println(cellsWrap1.getMaps().get("SUB").getTest());
     }
- }
+}

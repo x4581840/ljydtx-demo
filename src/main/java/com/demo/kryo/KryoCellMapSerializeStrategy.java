@@ -18,12 +18,12 @@ public class KryoCellMapSerializeStrategy implements SerializeStrategy {
 
     static {
         int availableProcessors = Runtime.getRuntime().availableProcessors();
-        kryoPool = new KryoPool((int)(availableProcessors * 1.6), () -> {
-                            Kryo kryo = new Kryo();
-                            kryo.register(Cell.class, new CellSerializer());
-                            kryo.register(SubCell.class, new SubCellSerializer());
-                            kryo.register(CellsWrap.class);
-                            kryo.register(HashMap.class);
+        kryoPool = new KryoPool((int) (availableProcessors * 1.6), () -> {
+            Kryo kryo = new Kryo();
+            kryo.register(Cell.class, new CellSerializer());
+            kryo.register(SubCell.class, new SubCellSerializer());
+            kryo.register(CellsWrap.class);
+            kryo.register(HashMap.class);
 //                            kryo.register(Cell.class, new JavaSerializer());
 
 //                            CollectionSerializer serializer = new CollectionSerializer();
@@ -31,11 +31,11 @@ public class KryoCellMapSerializeStrategy implements SerializeStrategy {
 //                            serializer.setElementsCanBeNull(false);
 //                            kryo.register(ArrayList.class, serializer);
 //                            kryo.register(List.class);
-                            kryo.register(ArrayList.class);
+            kryo.register(ArrayList.class);
 
 
-                            return kryo;
-                        });
+            return kryo;
+        });
     }
 
     @Override

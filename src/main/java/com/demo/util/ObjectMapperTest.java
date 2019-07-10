@@ -80,7 +80,7 @@ public class ObjectMapperTest {
         /**
          * 输出
          * {}
-         com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.demo.util.Person and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)
+         com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.demo.util.People and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)
          */
     }
 
@@ -92,7 +92,7 @@ public class ObjectMapperTest {
         //反序列化的时候如果多了其他属性,不抛出异常
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-//		Person person = new Person1(1, "zxc", new Date());
+//		People person = new Person1(1, "zxc", new Date());
 
 //		String personJson = objectMapper.writeValueAsString(person);
 //		System.out.println(personJson);
@@ -111,15 +111,15 @@ public class ObjectMapperTest {
 
         /**
          * 输出
-         *Person [id=1, name=zxc, birthDate=null]
+         *People [id=1, name=zxc, birthDate=null]
          com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "age"
          */
     }
 
     /**
      * Include.ALWAYS  是序列化对像所有属性
-       Include.NON_NULL 只有不为null的字段才被序列化
-       Include.NON_EMPTY 如果为null或者 空字符串和空集合都不会被序列化
+     Include.NON_NULL 只有不为null的字段才被序列化
+     Include.NON_EMPTY 如果为null或者 空字符串和空集合都不会被序列化
      */
 
 
@@ -143,9 +143,10 @@ public class ObjectMapperTest {
         String personStr = objectMapper.writeValueAsString(persons);
 
         //反序列化为List<user> 集合,1需要通过 TypeReference 来具体传递值
-        List<Person> persons2 = objectMapper.readValue(personStr, new TypeReference<List<Person>>() {});
+        List<Person> persons2 = objectMapper.readValue(personStr, new TypeReference<List<Person>>() {
+        });
 
-        for(Person person : persons2) {
+        for (Person person : persons2) {
             System.out.println(person);
         }
 
@@ -153,7 +154,7 @@ public class ObjectMapperTest {
         JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, Person.class);
         List<Person> persons3 = objectMapper.readValue(personStr, javaType);
 
-        for(Person person : persons3) {
+        for (Person person : persons3) {
             System.out.println(person);
         }
     }

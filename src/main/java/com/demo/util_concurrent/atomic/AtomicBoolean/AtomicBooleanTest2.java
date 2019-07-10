@@ -3,7 +3,7 @@ package com.demo.util_concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class AtomicBooleanTest2 implements Runnable{
+public class AtomicBooleanTest2 implements Runnable {
 
     private static AtomicBoolean exists = new AtomicBoolean(false);
 
@@ -30,6 +30,7 @@ public class AtomicBooleanTest2 implements Runnable{
             System.out.println(name + " give up");
         }
     }
+
     public static void main(String[] args) {
 
         AtomicBooleanTest2 bar1 = new AtomicBooleanTest2("bar1");

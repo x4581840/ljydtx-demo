@@ -18,7 +18,7 @@ public class BitSetTest {
     private static BitSet emptyBitSet = new BitSet();
 
     @BeforeClass
-    public static void init(){
+    public static void init() {
         for (int i = 0; i < 63; i++) {
             allBitSet.set(i);
             if (i % 2 == 0) {
@@ -131,33 +131,49 @@ public class BitSetTest {
         System.out.println("全量Bit-长度：" + allBitSet.length());
         System.out.println("偶数Bit-长度：" + evenBitSet.length());
     }
+
     public static void main(String[] args) {
-        test1();
+//        test1();
+        BitSet bitSet = new BitSet(100);
+        bitSet.set(88);
+        System.out.println(bitSet);//{88}
+        System.out.println(bitSet.get(88)); //true
+        System.out.println(bitSet.get(89)); //false
+        System.out.println(bitSet.get(100)); //false
+        bitSet.set(101);
+        System.out.println(bitSet.get(101)); //true
+
+        bitSet.set(Integer.MAX_VALUE);
+        System.out.println(bitSet.get(Integer.MAX_VALUE));//true
+        System.out.println(Integer.MAX_VALUE);
+
+//        bitSet.set(Integer.MAX_VALUE+1);//报错
+//        System.out.println(bitSet.get(Integer.MAX_VALUEAX_VALUE+1));//报错
     }
 
     public static void test1() {
         BitSet bitSet = new BitSet();
         // true--64
-        System.out.println(bitSet.isEmpty()+"--"+bitSet.size());
+        System.out.println(bitSet.isEmpty() + "--" + bitSet.size());
         bitSet.set(0);
         // false--64
-        System.out.println(bitSet.isEmpty()+"--"+bitSet.size());
+        System.out.println(bitSet.isEmpty() + "--" + bitSet.size());
         bitSet.set(1);
         // false--64
-        System.out.println(bitSet.isEmpty()+"--"+bitSet.size());
+        System.out.println(bitSet.isEmpty() + "--" + bitSet.size());
         // false
         System.out.println(bitSet.get(65));
         // false--64
-        System.out.println(bitSet.isEmpty()+"--"+bitSet.size());
+        System.out.println(bitSet.isEmpty() + "--" + bitSet.size());
         bitSet.set(65);
         // false--128
-        System.out.println(bitSet.isEmpty()+"--"+bitSet.size());
+        System.out.println(bitSet.isEmpty() + "--" + bitSet.size());
 
-        System.out.println(63>>6); //0
+        System.out.println(63 >> 6); //0
 
         bitSet.set(100909);
         // true-- 100928
-        System.out.println(bitSet.isEmpty()+"--"+bitSet.size());
+        System.out.println(bitSet.isEmpty() + "--" + bitSet.size());
         // true
         System.out.println(bitSet.get(100909));
         // false

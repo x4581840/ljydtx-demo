@@ -1,13 +1,10 @@
 package com.demo.kryo;
 
 
-
 /**
- *
  * @author runsheng.nrs
- * @since 2018-12-5
  * @version 1.0.0
- *
+ * @since 2018-12-5
  */
 public class SerializeStrategyFactory {
 //    public static SerializeStrategy create(StoreInfoId storeInfoId) {
