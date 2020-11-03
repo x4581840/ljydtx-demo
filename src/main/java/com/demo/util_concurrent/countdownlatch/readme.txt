@@ -1,0 +1,1 @@
+核心技术原理 AQS，AQS 全称 AbstractQueuedSynchronizer，是java.util.concurrent 中提供的一种高效且可扩展的同步机制

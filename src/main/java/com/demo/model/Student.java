@@ -1,5 +1,7 @@
 package com.demo.model;
 
+import java.util.Date;
+
 public class Student {
     private Integer id;
 
@@ -10,6 +12,18 @@ public class Student {
     private String scoreSum;
 
     private String scoreAvg;
+
+    private Date birthday;
+
+    private Long test;
+
+    public Long getTest() {
+        return test;
+    }
+
+    public void setTest(Long test) {
+        this.test = test;
+    }
 
     public Integer getId() {
         return id;
@@ -49,5 +63,13 @@ public class Student {
 
     public void setScoreAvg(String scoreAvg) {
         this.scoreAvg = scoreAvg == null ? null : scoreAvg.trim();
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

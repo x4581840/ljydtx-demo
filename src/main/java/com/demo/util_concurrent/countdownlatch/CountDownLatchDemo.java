@@ -21,8 +21,6 @@ public class CountDownLatchDemo {
                     e.printStackTrace();
                 }
             }
-
-            ;
         }.start();
 
         new Thread() {
@@ -30,14 +28,17 @@ public class CountDownLatchDemo {
                 try {
                     System.out.println("子线程" + Thread.currentThread().getName() + "正在执行");
                     Thread.sleep(3);
+//                    int i = 0;
+//                    if(i == 0) {
+//                        //如果这里抛出错误，主线程会一直卡着，因为没有countDown
+//                        throw new RuntimeException("抛出错误");
+//                    }
                     System.out.println("子线程" + Thread.currentThread().getName() + "执行完毕");
                     countDownLatch.countDown();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-
-            ;
         }.start();
 
         /*try {
@@ -46,8 +47,14 @@ public class CountDownLatchDemo {
             e.printStackTrace();
         }*/
 
+//        int i = 0;
+//        if(i == 0) {
+//            //如果这里抛出错误，主线程不会继续执行
+//            throw new RuntimeException("抛出错误");
+//        }
+
         try {
-//            System.out.println("等待2个子线程执行完毕...");
+            System.out.println("等待2个子线程执行完毕...");
             countDownLatch.await();
             System.out.println("2个子线程已经执行完毕");
             System.out.println("继续执行主线程");

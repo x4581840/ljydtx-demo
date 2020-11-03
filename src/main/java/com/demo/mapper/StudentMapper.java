@@ -7,15 +7,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import javax.annotation.Resource;
-
-@Resource
 public interface StudentMapper {
     int countByExample(StudentExample example);
 
     int deleteByExample(StudentExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Student record);
 
@@ -23,7 +20,7 @@ public interface StudentMapper {
 
     List<Student> selectByExample(StudentExample example);
 
-    Student selectByPrimaryKey(Long id);
+    Student selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Student record, @Param("example") StudentExample example);
 
@@ -32,4 +29,6 @@ public interface StudentMapper {
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);
+
+    Student selectById(Integer id);
 }

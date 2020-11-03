@@ -9,21 +9,35 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+/*import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;*/
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.servlet.Filter;
 
+//import org.springframework.messaging.Message;
+
 @MapperScan("com.demo.mapper")
 @SpringBootApplication//(scanBasePackages = {"com.demo"})
-@ComponentScan(basePackages = {"com.demo"})
+@ComponentScan(basePackages = {"com.demo"}, lazyInit = false)
 @ServletComponentScan(basePackages = "com.demo.springboot.filter")
-@Import(DynamicDataSourceRegister.class)
+@EnableTransactionManagement
+//@Import(DynamicDataSourceRegister.class)
 //@SpringBootApplication里面包含了@EnableAutoConfiguration
 //@EnableAspectJAutoProxy
+//@EnableBinding(Sink.class)
 public class LjydtxDemoApplication {
+
+    // 监听 binding 为 Sink.INPUT 的消息
+//    @StreamListener(Sink.INPUT)
+//    public void input(Message<String> message) {
+//        System.out.println("一般监听收到：" + message.getPayload());
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(LjydtxDemoApplication.class, args);

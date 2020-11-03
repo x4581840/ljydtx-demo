@@ -2,8 +2,11 @@ package com.demo.mapper.impl;
 
 import com.demo.mapper.StudentMapper;
 import com.demo.model.Student;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,7 +16,7 @@ import java.util.List;
  * @Version 1.0
  **/
 
-@Resource
+@Mapper
 public interface StudentImplMapper extends StudentMapper {
 
     // 注解 @TargetDataSource 不可以在这里使用
@@ -22,4 +25,8 @@ public interface StudentImplMapper extends StudentMapper {
     Student getById(int id);
 
     String getNameById(int id);
+
+    List<Student> getStudentList(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
+    void updateCount();
 }

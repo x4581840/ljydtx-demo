@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.mapper.StudentMapper">
     <resultMap id="BaseResultMap" type="com.demo.model.Student">
-        <id column="id" property="id" jdbcType="BIGINT"/>
-        <result column="age" property="age" jdbcType="INTEGER"/>
-        <result column="name" property="name" jdbcType="VARCHAR"/>
-        <result column="score_sum" property="scoreSum" jdbcType="VARCHAR"/>
-        <result column="score_avg" property="scoreAvg" jdbcType="VARCHAR"/>
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="score_sum" jdbcType="VARCHAR" property="scoreSum"/>
+        <result column="score_avg" jdbcType="VARCHAR" property="scoreAvg"/>
+        <result column="birthday" jdbcType="TIMESTAMP" property="birthday"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">
                 <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
                         <foreach collection="criteria.criteria" item="criterion">
                             <choose>
                                 <when test="criterion.noValue">
@@ -26,7 +27,7 @@
                                 </when>
                                 <when test="criterion.listValue">
                                     and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
                                              separator=",">
                                         #{listItem}
                                     </foreach>
@@ -42,7 +43,7 @@
         <where>
             <foreach collection="example.oredCriteria" item="criteria" separator="or">
                 <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
                         <foreach collection="criteria.criteria" item="criterion">
                             <choose>
                                 <when test="criterion.noValue">
@@ -56,7 +57,7 @@
                                 </when>
                                 <when test="criterion.listValue">
                                     and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
                                              separator=",">
                                         #{listItem}
                                     </foreach>
@@ -69,9 +70,9 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-        id, age, name, score_sum, score_avg
+        id, age, name, score_sum, score_avg, birthday
     </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.demo.model.StudentExample">
+    <select id="selectByExample" parameterType="com.demo.model.StudentExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -85,15 +86,15 @@
             order by ${orderByClause}
         </if>
     </select>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from student
-        where id = #{id,jdbcType=BIGINT}
+        where id = #{id,jdbcType=INTEGER}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from student
-        where id = #{id,jdbcType=BIGINT}
+        where id = #{id,jdbcType=INTEGER}
     </delete>
     <delete id="deleteByExample" parameterType="com.demo.model.StudentExample">
         delete from student
@@ -103,9 +104,11 @@
     </delete>
     <insert id="insert" parameterType="com.demo.model.Student">
         insert into student (id, age, name,
-        score_sum, score_avg)
-        values (#{id,jdbcType=BIGINT}, #{age,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
-        #{scoreSum,jdbcType=VARCHAR}, #{scoreAvg,jdbcType=VARCHAR})
+        score_sum, score_avg, birthday
+        )
+        values (#{id,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+        #{scoreSum,jdbcType=VARCHAR}, #{scoreAvg,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}
+        )
     </insert>
     <insert id="insertSelective" parameterType="com.demo.model.Student">
         insert into student
@@ -125,10 +128,13 @@
             <if test="scoreAvg != null">
                 score_avg,
             </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
-                #{id,jdbcType=BIGINT},
+                #{id,jdbcType=INTEGER},
             </if>
             <if test="age != null">
                 #{age,jdbcType=INTEGER},
@@ -142,6 +148,9 @@
             <if test="scoreAvg != null">
                 #{scoreAvg,jdbcType=VARCHAR},
             </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
         </trim>
     </insert>
     <select id="countByExample" parameterType="com.demo.model.StudentExample" resultType="java.lang.Integer">
@@ -154,7 +163,7 @@
         update student
         <set>
             <if test="record.id != null">
-                id = #{record.id,jdbcType=BIGINT},
+                id = #{record.id,jdbcType=INTEGER},
             </if>
             <if test="record.age != null">
                 age = #{record.age,jdbcType=INTEGER},
@@ -168,6 +177,9 @@
             <if test="record.scoreAvg != null">
                 score_avg = #{record.scoreAvg,jdbcType=VARCHAR},
             </if>
+            <if test="record.birthday != null">
+                birthday = #{record.birthday,jdbcType=TIMESTAMP},
+            </if>
         </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
@@ -175,11 +187,12 @@
     </update>
     <update id="updateByExample" parameterType="map">
         update student
-        set id = #{record.id,jdbcType=BIGINT},
+        set id = #{record.id,jdbcType=INTEGER},
         age = #{record.age,jdbcType=INTEGER},
         name = #{record.name,jdbcType=VARCHAR},
         score_sum = #{record.scoreSum,jdbcType=VARCHAR},
-        score_avg = #{record.scoreAvg,jdbcType=VARCHAR}
+        score_avg = #{record.scoreAvg,jdbcType=VARCHAR},
+        birthday = #{record.birthday,jdbcType=TIMESTAMP}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
@@ -199,15 +212,27 @@
             <if test="scoreAvg != null">
                 score_avg = #{scoreAvg,jdbcType=VARCHAR},
             </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=TIMESTAMP},
+            </if>
         </set>
-        where id = #{id,jdbcType=BIGINT}
+        where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.demo.model.Student">
         update student
         set age = #{age,jdbcType=INTEGER},
         name = #{name,jdbcType=VARCHAR},
         score_sum = #{scoreSum,jdbcType=VARCHAR},
-        score_avg = #{scoreAvg,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=BIGINT}
+        score_avg = #{scoreAvg,jdbcType=VARCHAR},
+        birthday = #{birthday,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
     </update>
+
+
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.demo.model.Student">
+        select
+            score_sum as test
+        from student
+        where id = #{id,jdbcType=INTEGER}
+    </select>
 </mapper>

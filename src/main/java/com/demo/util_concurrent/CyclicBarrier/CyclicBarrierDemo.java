@@ -31,13 +31,16 @@ public class CyclicBarrierDemo {
             try {
                 Thread.sleep(5000);      //以睡眠来模拟写入数据操作
                 System.out.println("线程" + Thread.currentThread().getName() + "写入数据完毕，等待其他线程写入完毕");
+                //await() 每 被 调 用 一 次 ， 计 数 便
+                //会 减 少 1， 并 阻 塞 住 当 前 线 程 。 当 计 数 减 至 0 时 ， 阻 塞 解 除 ， 所 有 在
+                //此 CyclicBarrier 上 面 阻 塞 的 线 程 开 始 运 行 。
                 cyclicBarrier.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (BrokenBarrierException e) {
                 e.printStackTrace();
             }
-            System.out.println("所有线程写入完毕，继续处理其他任务...");
+            System.out.println("所有线程写入完毕，" + "线程" + Thread.currentThread().getName() + "继续处理其他任务...");
         }
     }
 }

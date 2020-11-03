@@ -13,4 +13,6 @@ public interface UserBo {
     void testJishu();
 
     List<User> selectUserByCondition(String userName);
+
+    List<User> selectUserByUserList(List<User> userList);
 }

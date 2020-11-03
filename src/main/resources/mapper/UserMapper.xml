@@ -235,16 +235,34 @@
         where id = #{id,jdbcType=INTEGER} for update
     </select>
 
-    <select id="selectUserByCondition" resultMap="BaseResultMap">
+    <select id="selectUserByCondition" resultType="com.demo.model.User">
         select
-        <include refid="Base_Column_List"/>
+            id,
+            user_name as userName,
+            user_age as userAge,
+            user_address as userAddress,
+            user_password as userPassword,
+            user_info as userInfo
         from user
-        <!-- 当if中的条件成立，后面会加where user_name like '%xxx%',去掉了and -->
+        <!-- 当if中的条件成立，后面会加where user_name like '%xxx%',去掉了and resultMap="BaseResultMap"-->
         <!-- 字符串拼接：mysql用concat ，Oracle用||-->
         <where>
             <if test="userName != null and userName != ''">
                 and user_name like concat('%', #{userName}, '%')
             </if>
         </where>
+    </select>
+
+
+    <select id="selectUserByUserList" resultType="com.demo.model.User">
+        select
+            user_name AS userName,
+            user_age AS userAge
+        from
+            user
+        where
+            <foreach collection="userList" separator="or" open="(" close=")" item="user">
+                ( user_name = #{user.userName} and user_age = #{user.userAge} )
+            </foreach>
     </select>
 </mapper>

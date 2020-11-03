@@ -41,7 +41,7 @@ public class CyclicBarrierDemo1 {
             } catch (BrokenBarrierException e) {
                 e.printStackTrace();
             }
-            System.out.println("所有线程写入完毕，继续处理其他任务...");
+            System.out.println("所有线程写入完毕，" + "线程" + Thread.currentThread().getName() + "继续处理其他任务...");
         }
     }
 }

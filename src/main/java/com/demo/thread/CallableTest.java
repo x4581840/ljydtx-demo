@@ -2,6 +2,7 @@ package com.demo.thread;
 
 import com.demo.util_concurrent.atomic.concurrentHashMap.Executor;
 
+import java.math.BigDecimal;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,7 +25,7 @@ public class CallableTest implements Callable<String> {
 
     public static void main(String[] args) throws Exception {
 
-        ExecutorService executorService = Executors.newCachedThreadPool();
+        /*ExecutorService executorService = Executors.newCachedThreadPool();
 
         //普通线程
         CallableTest ct = new CallableTest("putong");
@@ -40,7 +41,10 @@ public class CallableTest implements Callable<String> {
         RunnableTest rt = new RunnableTest();
         executorService.submit(rt);
 
-        executorService.shutdown();
+        executorService.shutdown();*/
+        Integer a = null;
+
+        System.out.println(new BigDecimal(a));;
     }
 
 

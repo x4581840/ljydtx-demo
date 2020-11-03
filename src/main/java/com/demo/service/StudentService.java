@@ -7,11 +7,17 @@ import com.demo.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 
 import javax.transaction.Transactional;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +39,71 @@ public class StudentService {
     @Autowired
     private StudentImplMapper studentImplMapper;
 
+    @Autowired
+    private StudentMapper studentMapper;
+
+    @Autowired
+    DataSourceTransactionManager dataSourceTransactionManager;
+    @Autowired
+    TransactionDefinition transactionDefinition;
+
+    public Student getStudentById(Integer id) {
+        return studentMapper.selectByPrimaryKey(id);
+    }
+
+    public Student getStudentById1(Integer id) {
+        return studentMapper.selectById(id);
+    }
+
+    @org.springframework.transaction.annotation.Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
+    public void insertStudent() {
+        // test(); 这样调用test回滚不生效
+        Student record = new Student();
+        record.setName("ss");
+        record.setId(2999);
+        studentMapper.insert(record);
+        record = new Student();
+        record.setName("ss");
+        record.setId(2999);
+        studentMapper.insert(record);
+    }
+
+    public void insertStudent1(){
+        //手动开启事务
+        TransactionStatus transactionStatus = dataSourceTransactionManager.getTransaction(transactionDefinition);
+        try {
+            Student record = new Student();
+            record.setName("ss");
+            record.setId(2999);
+            studentMapper.insert(record);
+            record = new Student();
+            record.setName("ss");
+            record.setId(2990);
+            studentMapper.insert(record);
+            //手动提交事务
+            dataSourceTransactionManager.commit(transactionStatus);//提交
+        }catch (Exception e) {
+            //手动回滚事务
+            dataSourceTransactionManager.rollback(transactionStatus);//最好是放在catch 里面,防止程序异常而事务一直卡在哪里未提交
+        }
+    }
+
+    @org.springframework.transaction.annotation.Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
+    public void test() {
+        Student record = new Student();
+        record.setName("ss");
+        record.setId(2999);
+        studentMapper.insert(record);
+        record = new Student();
+        record.setName("ss");
+        record.setId(2999);
+        studentMapper.insert(record);
+    }
+
+    public List<Student> getStudentList(Date startDate, Date endDate) {
+        return studentImplMapper.getStudentList(startDate, endDate);
+    }
+
     @TargetDataSource(name = "ds2")
     public List<Student> likeName(String name) {
         return studentImplMapper.likeName(name);
@@ -40,6 +111,10 @@ public class StudentService {
 
     public List<Student> likeNameByDefaultDataSource(String name) {
         return studentImplMapper.likeName(name);
+    }
+
+    public void updateCount() {
+        studentImplMapper.updateCount();
     }
 
     /**

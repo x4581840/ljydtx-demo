@@ -36,4 +36,6 @@ public interface UserMapper {
     User lockUserById(Integer id);
 
     List<User> selectUserByCondition(@Param("userName") String userName);
+
+    List<User> selectUserByUserList(@Param("userList") List<User> userList);
 }
