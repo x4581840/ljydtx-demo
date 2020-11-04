@@ -31,6 +31,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+/**
+ * 测试本地合并分支
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
