@@ -1,4 +1,4 @@
-package com.demo.shejimoshil._daili;
+package com.demo.shejimoshi.daili;
 
 public class CglibProxyTest {
     public static void main(String[] args) {

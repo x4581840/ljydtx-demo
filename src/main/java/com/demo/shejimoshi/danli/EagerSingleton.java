@@ -1,4 +1,4 @@
-package com.demo.shejimoshi._danli;
+package com.demo.shejimoshi.danli;
 
 /**
  * 饿汉式单例---第一种

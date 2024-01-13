@@ -1,4 +1,4 @@
-package com.demo.shejimoshil._daili;
+package com.demo.shejimoshi.daili;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;

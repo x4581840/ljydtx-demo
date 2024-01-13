@@ -15,11 +15,11 @@ public class HttpClientPoolTest {
 
     @PostConstruct
     public void testPostContruct() {
-        System.out.println("postconstruct====");
+        System.out.println("HttpClientPoolTest postconstruct====");
     }
 
     public HttpClientPoolTest() {
-        System.out.println("构造函数");
+        System.out.println("构造函数 HttpClientPoolTest()");
     }
 
 

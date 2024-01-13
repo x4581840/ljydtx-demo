@@ -1,9 +1,9 @@
-package com.demo.shejimoshi._shipeiqi;
+package com.demo.shejimoshi.shipeiqi;
 
 /**
  * 类适配器模式
  */
-public interface Target1 {
+public interface Target {
     /**
      * 这是源类Adaptee也有的方法
      */

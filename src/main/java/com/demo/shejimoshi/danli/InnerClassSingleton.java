@@ -1,4 +1,4 @@
-package com.demo.shejimoshi._danli;
+package com.demo.shejimoshi.danli;
 
 /**
  * 内部类式单例---第四种

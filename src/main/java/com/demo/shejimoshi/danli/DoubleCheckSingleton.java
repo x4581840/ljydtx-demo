@@ -1,4 +1,4 @@
-package com.demo.shejimoshi._danli;
+package com.demo.shejimoshi.danli;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

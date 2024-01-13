@@ -16,5 +16,6 @@ public class Main2 {
         UserService o = (UserService) enhancer.create();
         System.out.println(o.getName(1));
         System.out.println(o.getAge(1));
+        Integer.toBinaryString(10);
     }
 }

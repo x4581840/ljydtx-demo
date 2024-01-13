@@ -1,4 +1,4 @@
-package com.demo.shejimoshi._shipeiqi;
+package com.demo.shejimoshi.shipeiqi;
 
 /**
  * 类适配器模式

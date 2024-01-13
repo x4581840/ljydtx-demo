@@ -9,7 +9,7 @@ package com.demo.Math;
 public class MathTest {
     public static void main(String[] args) {
         System.out.println();
-        //无益处转换
+        //无益处转换1
         System.out.println(Math.toIntExact(1232232323233232322L));
 
     }

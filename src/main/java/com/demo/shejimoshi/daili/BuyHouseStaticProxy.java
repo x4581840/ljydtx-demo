@@ -1,4 +1,4 @@
-package com.demo.shejimoshil._daili;
+package com.demo.shejimoshi.daili;
 
 /**
  * 静态代理
