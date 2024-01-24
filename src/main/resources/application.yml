@@ -83,7 +83,7 @@ memcache:
 #      password: root123456
 
 server:
-  port: ${longjianyong:8080} #如果变量longjianyong有值的话就取它的值，即server.port=8081，否则server.port=8080
+  port: ${longjianyong:8089} #如果变量longjianyong有值的话就取它的值，即server.port=8081，否则server.port=8080
   servlet:
     context-path: /springboot
 #  ssl:
@@ -95,7 +95,28 @@ server:
 #    key-password: zuozewei
 #    enabled: true
 
-longjianyong: 8081
+longjianyong: 8089
 
 ## 打印sql日志 com.demo.mapper路径下
-logging.level.com.demo.mapper: DEBUG
+#logging.level.com.demo.mapper: DEBUG
+
+### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+
+#xxl:
+#  job:
+#    admin:
+#      addresses: http://127.0.0.1:8080/xxl-job-admin
+#  ### xxl-job, access token
+#    accessToken:  default_token
+#  ### xxl-job executor appname
+#    executor:
+#      appname:  xxl-job-executor-sample
+#  ### xxl-job executor registry-address: default use address to registry , otherwise use ip:port if address is null
+#      address:
+#  ### xxl-job executor server-info
+#      ip:
+#      port: 9996
+#  ### xxl-job executor log-path
+#      logpath: /data/applogs/xxl-job/jobhandler
+#  ### xxl-job executor log-retention-days
+#      logretentiondays: 30
