@@ -10,7 +10,7 @@ public interface UserBo {
 
     User selectUser(Integer id);
 
-    void testJishu();
+    void testJishu();//
 
     List<User> selectUserByCondition(String userName);
 
