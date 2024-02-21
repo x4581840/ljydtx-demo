@@ -17,7 +17,7 @@ import java.util.List;
 public class UserBoImpl /*extends SqlSessionDaoSupport*/ implements UserBo {
 
     @Resource
-    private UserMapper userMapper;
+    private UserMapper userMapper;//
 
     @Override
     public void insertUser(User user) {
