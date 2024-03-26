@@ -29,7 +29,7 @@ import javax.servlet.Filter;
 @EnableTransactionManagement
 //@Import(DynamicDataSourceRegister.class)
 //@SpringBootApplication里面包含了@EnableAutoConfiguration
-//@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy
 //@EnableBinding(Sink.class)
 public class LjydtxDemoApplication {
 

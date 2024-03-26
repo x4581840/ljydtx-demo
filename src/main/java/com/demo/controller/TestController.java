@@ -6,9 +6,13 @@ import com.demo.model.Student;
 import com.demo.service.StudentService;
 import com.demo.springcontext.SpringContextUtil;
 import com.demo.utils.DateUtils;
+import com.demo.zhujie_setvalue.FromRedis;
+import com.demo.zhujie_setvalue.LogExecutionTime;
+import com.demo.zhujie_setvalue.SomeService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Isolation;
@@ -38,6 +42,10 @@ public class TestController {
     private StudentService studentService;
     @Autowired
     private StudentMapper studentMapper;
+    @Resource
+    private SomeService someService;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
 
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
@@ -101,5 +109,31 @@ public class TestController {
         }
         System.out.println("end");
         return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/testInjectValue")
+    public ResponseEntity updateCount() {
+//        System.out.println(stringRedisTemplate.opsForValue().get("yourKey"));
+        someService.oneMethod(null, "one_lastParam");
+        someService.twoMethod(null, "two_lastParam");
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/testNotNull")
+    public ResponseEntity test(@com.demo.zhujie_setvalue.NotNull(message = "我丢") @Param(value = "test") String test, Integer test1) {
+//        System.out.println("testNotNull");
+        return ResponseEntity.ok("testNotNull");
+    }
+
+    @LogExecutionTime(value = "Custom Message")
+    @GetMapping("/demo")
+    public String demoEndpoint(@RequestParam("param") @LogExecutionTime(value = "yourKey") String param) {
+        // 模拟业务逻辑
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "Demo endpoint executed with param: " + param;
     }
 }
